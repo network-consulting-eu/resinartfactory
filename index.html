@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resin & Cement Artisans</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* Video Background */
+        .video-background {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            transition: 0.5s;
+        }
+
+        header.sticky {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 40px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 28px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.5s;
+        }
+
+        header.sticky .logo {
+            color: #333;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        header.sticky .nav-links a {
+            color: #333;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #e6a756;
+        }
+
+        /* Content */
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .content h1 {
+            color: #fff;
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .content p {
+            color: #f5f5f5;
+            font-size: 20px;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #e6a756;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #d89743;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Mobile menu */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            color: #fff;
+            font-size: 24px;
+        }
+
+        header.sticky .menu-toggle {
+            color: #333;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100% - 80px);
+                background: rgba(255, 255, 255, 0.95);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 40px;
+                transition: 0.5s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .nav-links a {
+                color: #333;
+                font-size: 20px;
+            }
+
+            .content h1 {
+                font-size: 36px;
+            }
+
+            .content p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-background">
+        <!-- Using a placeholder video from CDN as requested -->
+        <video autoplay loop muted playsinline>
+            <source src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.1.6/swiper-bundle.min.js.map" type="video/mp4">
+            <!-- This is a placeholder link - would need to be replaced with an actual video CDN source -->
+            <!-- For demonstration purposes only -->
+        </video>
+        <div class="overlay"></div>
+    </div>
+
+    <header>
+        <a href="index.html" class="logo">RESIN & CEMENT</a>
+        <div class="menu-toggle">☰</div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="our-work.html">Our Work</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </header>
+
+    <div class="content">
+        <h1>Artisan Resin Tables & Micro Cement</h1>
+        <p>Transforming spaces with bespoke, handcrafted designs that blend natural beauty with modern aesthetics.</p>
+        <a href="our-work.html" class="cta-button">Explore Our Work</a>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Sticky header on scroll
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 100) {
+                    $('header').addClass('sticky');
+                } else {
+                    $('header').removeClass('sticky');
+                }
+            });
+
+            // Mobile menu toggle
+            $('.menu-toggle').click(function() {
+                $('.nav-links').toggleClass('active');
+            });
+        });
+    </script>
+</body>
+</html>

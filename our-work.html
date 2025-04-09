@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Work - Resin & Cement Artisans</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            color: #333;
+            font-size: 28px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #e6a756;
+        }
+
+        /* Page content */
+        .page-container {
+            max-width: 1200px;
+            margin: 120px auto 60px;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-title h1 {
+            font-size: 42px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .page-title .separator {
+            width: 80px;
+            height: 4px;
+            background: #e6a756;
+            margin: 0 auto;
+        }
+
+        /* Tab navigation */
+        .tab-navigation {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            background: #fff;
+            border: none;
+            margin: 0 10px;
+            font-size: 18px;
+            font-weight: 500;
+            color: #555;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-button.active {
+            background: #e6a756;
+            color: #fff;
+        }
+
+        /* Work sections */
+        .work-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .work-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+
+        .section-intro h2 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .section-intro p {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Feature grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .feature-item {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .feature-content {
+            padding: 25px;
+        }
+
+        .feature-content h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: #333;
+        }
+
+        .feature-content p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .read-more {
+            display: inline-block;
+            padding: 8px 20px;
+            background: #e6a756;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .read-more:hover {
+            background: #d89743;
+        }
+
+        /* Process section */
+        .process-steps {
+            margin-top: 50px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 0 20px;
+            margin-bottom: 40px;
+        }
+
+        .step-number {
+            width: 70px;
+            height: 70px;
+            background: #e6a756;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .process-step h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .process-step p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Mobile menu */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            color: #333;
+            font-size: 24px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100% - 80px);
+                background: rgba(255, 255, 255, 0.95);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 40px;
+                transition: 0.5s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .tab-navigation {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tab-button {
+                width: 80%;
+                margin: 5px 0;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">RESIN & CEMENT</a>
+        <div class="menu-toggle">☰</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="work.html" class="active">Our Work</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </header>
+
+    <div class="page-container">
+        <div class="page-title">
+            <h1>Our Work</h1>
+            <div class="separator"></div>
+        </div>
+
+        <div class="tab-navigation">
+            <button class="tab-button active" data-tab="resin">Resin Tables</button>
+            <button class="tab-button" data-tab="cement">Micro Cement</button>
+        </div>
+
+        <!-- Resin Tables Section -->
+        <div id="resin" class="work-section active">
+            <div class="section-intro">
+                <h2>Resin Tables</h2>
+                <p>Our handcrafted resin tables blend natural wood with vibrant epoxy resin to create one-of-a-kind functional art pieces. Each table tells a unique story through its organic patterns and carefully selected materials.</p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-image" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="feature-content">
+                        <h3>River Tables</h3>
+                        <p>Our signature river tables feature stunning blue resin "rivers" flowing through natural wood slabs, creating a breathtaking visual effect that mimics water flowing through a landscape.</p>
+                        <a href="#" class="read-more">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-image" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="feature-content">
+                        <h3>Ocean Tables</h3>
+                        <p>Inspired by coastal scenes, our ocean tables incorporate multiple layers of colored resin to create depth and movement, perfectly capturing the essence of ocean waves and shorelines.</p>
+                        <a href="#" class="read-more">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-image" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="feature-content">
+                        <h3>Geode Tables</h3>
+                        <p>These unique pieces mimic natural geode formations using specialized techniques that create crystalline patterns within the resin, often incorporating actual gemstones and minerals.</p>
+                        <a href="#" class="read-more">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Wood Selection</h3>
+                    <p>We carefully source and select premium hardwoods with unique character, grain patterns, and natural features.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Design & Planning</h3>
+                    <p>Each piece is meticulously designed to highlight the wood's natural beauty while incorporating resin elements.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Resin Pouring</h3>
+                    <p>Multiple layers of premium epoxy resin are carefully poured and manipulated to create depth and visual interest.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Finishing & Polishing</h3>
+                    <p>Each piece undergoes extensive sanding, finishing, and polishing to achieve a flawless, glass-like surface.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Micro Cement Section -->
+        <div id="cement" class="work-section">
+            <div class="section-intro">
+                <h2>Micro Cement</h2>
+                <p>Our micro cement applications transform surfaces with a sleek, contemporary finish that combines durability with minimalist beauty. Perfect for walls, floors, and furniture, these finishes create seamless, modern spaces.</p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-image" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="feature-content">
+                        <h3>Interior Walls</h3>
+                        <p>Our micro cement wall finishes create stunning, textured surfaces with a contemporary industrial aesthetic, available in a wide range of custom colors and finishes.</p>
+                        <a href="#" class="read-more">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-image" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="feature-content">
+                        <h3>Decorative Flooring</h3>
+                        <p>Durable, seamless flooring solutions that combine beauty with functionality, perfect for residential and commercial spaces requiring a modern, low-maintenance finish.</p>
+                        <a href="#" class="read-more">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-image" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="feature-content">
+                        <h3>Custom Furniture</h3>
+                        <p>From sleek countertops to entire furniture pieces, our micro cement applications create striking monolithic forms with a sophisticated, minimalist appeal.</p>
+                        <a href="#" class="read-more">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Surface Preparation</h3>
+                    <p>Thorough preparation of the substrate ensures perfect adhesion and a flawless final result.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Base Application</h3>
+                    <p>Multiple thin layers of our specialized micro cement create the foundation for the final finish.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Color & Texture</h3>
+                    <p>Custom pigments and application techniques create the desired aesthetic, from subtle to bold.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Sealing & Protection</h3>
+                    <p>High-performance sealants protect the surface while enhancing its natural beauty and ensuring longevity.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Mobile menu toggle
+            $('.menu-toggle').click(function() {
+                $('.nav-links').toggleClass('active');
+            });
+            
+            // Tab navigation
+            $('.tab-button').click(function() {
+                const tab = $(this).data('tab');
+                
+                // Update active tab button
+                $('.tab-button').removeClass('active');
+                $(this).addClass('active');
+                
+                // Show selected content
+                $('.work-section').removeClass('active');
+                $('#' + tab).addClass('active');
+            });
+        });
+    </script>
+</body>
+</html>
