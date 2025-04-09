@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resin & Cement Artisans</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Ubuntu', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
@@ -37,13 +40,25 @@
             z-index: -1;
         }
 
+        /* Fallback Image for Video */
+        .fallback-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2; /* Lower z-index than video so video takes precedence when available */
+            display: block;
+        }
+
         .overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.65); /* Increased transparency for better readability */
             z-index: 0;
         }
 
@@ -57,26 +72,68 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 10;
-            transition: 0.5s;
+            z-index: 100; /* Higher z-index to ensure header stays above content */
+            background: transparent; /* Fully transparent background */
+            box-shadow: none; /* Remove shadow for transparency */
+            transition: transform 0.3s ease-in-out, background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+        }
+
+        header.visible {
+            transform: translateY(0);
+        }
+
+        header.hidden {
+            transform: translateY(-100%);
         }
 
         header.sticky {
-            background: rgba(255, 255, 255, 0.95);
             padding: 10px 40px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.95); /* Add background when sticky for better readability */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links a {
+            color: #fff; /* Light text for contrast against dark image background on home page */
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        header.sticky .nav-links a {
+            color: #333; /* Dark text on sticky header when background becomes white */
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #e6a756; /* Keep gold color for hover/active state */
+        }
+
+        .menu-toggle {
+            color: #fff; /* Light icon for home page dark background */
+        }
+
+        header.sticky .menu-toggle {
+            color: #333; /* Dark icon on sticky header */
         }
 
         .logo {
-            color: #fff;
-            font-size: 28px;
-            font-weight: 700;
             text-decoration: none;
             transition: 0.5s;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 2;
         }
 
-        header.sticky .logo {
-            color: #333;
+        .logo-image {
+            height: auto;
+            width: 200px;
+            transition: 0.3s;
+            mix-blend-mode: multiply; /* Better for maintaining gold color on any background */
+        }
+
+        header.sticky .logo-image {
+            width: 180px;
         }
 
         .nav-links {
@@ -172,7 +229,7 @@
                 left: -100%;
                 width: 100%;
                 height: calc(100% - 80px);
-                background: rgba(255, 255, 255, 0.95);
+                background: rgba(245, 245, 245, 0.9); /* Light gray background with transparency */
                 flex-direction: column;
                 align-items: center;
                 justify-content: flex-start;
@@ -187,9 +244,9 @@
             .nav-links li {
                 margin: 15px 0;
             }
-
+            
             .nav-links a {
-                color: #333;
+                color: #333 !important; /* Force dark text in mobile menu */
                 font-size: 20px;
             }
 
@@ -211,11 +268,13 @@
             <!-- This is a placeholder link - would need to be replaced with an actual video CDN source -->
             <!-- For demonstration purposes only -->
         </video>
+        <!-- Fallback image when video doesn't load -->
+        <img src="images/resin-table-background.jpg" alt="Beautiful resin table" class="fallback-image">
         <div class="overlay"></div>
     </div>
 
     <header>
-        <a href="index.html" class="logo">RESIN & CEMENT</a>
+        <a href="index.html" class="logo"><img src="images/logo-resinartfactory.svg" alt="Resin Art Factory Logo" class="logo-image"></a>
         <div class="menu-toggle">☰</div>
         <ul class="nav-links">
             <li><a href="index.html" class="active">Home</a></li>
@@ -246,6 +305,12 @@
             // Mobile menu toggle
             $('.menu-toggle').click(function() {
                 $('.nav-links').toggleClass('active');
+            });
+
+            // Video fallback - ensure the fallback image shows if video fails
+            $('video').on('error', function() {
+                $(this).css('display', 'none');
+                $('.fallback-image').css('z-index', '-1'); // Move image to video's z-index when video fails
             });
         });
     </script>

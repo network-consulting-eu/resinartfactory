@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Resin & Cement Artisans</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Ubuntu', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
@@ -29,16 +32,54 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 10;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            z-index: 100; /* Higher z-index to ensure header stays above content */
+            background: transparent !important; /* Force transparency throughout */
+            box-shadow: none; /* Remove shadow for transparency */
+            transition: transform 0.3s ease-in-out, padding 0.3s ease;
+        }
+
+        header.visible {
+            transform: translateY(0);
+        }
+
+        header.hidden {
+            transform: translateY(-100%);
+        }
+
+        /* Only add background when explicitly in sticky state AND not transitioning */
+        header.sticky:not(.transitioning) {
+            padding: 10px 40px;
+        }
+
+        .nav-links a {
+            color: #333; /* Dark text for contrast */
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #e6a756; /* Keep gold color for hover/active state */
+        }
+
+        .menu-toggle {
+            color: #333; /* Dark icon */
         }
 
         .logo {
-            color: #333;
-            font-size: 28px;
-            font-weight: 700;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-image {
+            height: auto;
+            width: 200px;
+            transition: 0.3s;
+            /* No blend mode or filters needed for SVG */
         }
 
         .nav-links {
@@ -65,13 +106,15 @@
         /* Page content */
         .page-container {
             max-width: 1200px;
-            margin: 120px auto 60px;
+            margin: 120px auto 60px; /* Increased top margin to ensure space below header */
             padding: 0 20px;
+            /* Will be adjusted with JavaScript for proper padding */
         }
 
         .page-title {
             text-align: center;
             margin-bottom: 60px;
+            padding-top: 40px; /* Added padding to create more space between header and title */
         }
 
         .page-title h1 {
@@ -208,7 +251,7 @@
                 left: -100%;
                 width: 100%;
                 height: calc(100% - 80px);
-                background: rgba(255, 255, 255, 0.95);
+                background: rgba(245, 245, 245, 0.9); /* Light gray background with transparency */
                 flex-direction: column;
                 align-items: center;
                 justify-content: flex-start;
@@ -222,6 +265,11 @@
 
             .nav-links li {
                 margin: 15px 0;
+            }
+            
+            .nav-links a {
+                color: #333 !important; /* Force dark text in mobile menu */
+                font-size: 20px;
             }
 
             .about-image {
@@ -238,7 +286,7 @@
 </head>
 <body>
     <header>
-        <a href="index.html" class="logo">RESIN & CEMENT</a>
+        <a href="index.html" class="logo"><img src="images/logo-resinartfactory.svg" alt="Resin Art Factory Logo" class="logo-image"></a>
         <div class="menu-toggle">☰</div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
@@ -303,12 +351,76 @@
     </div>
 
     <script>
-        $(document).ready(function() {
-            // Mobile menu toggle
-            $('.menu-toggle').click(function() {
-                $('.nav-links').toggleClass('active');
-            });
-        });
+// Add this JavaScript to replace the previous scroll scripts
+
+$(document).ready(function() {
+    // Mobile menu toggle
+    $('.menu-toggle').click(function() {
+        $('.nav-links').toggleClass('active');
+    });
+    
+    // Smart header scroll functionality
+    let lastScrollTop = 0;
+    const header = $('header');
+    const delta = 10; // Minimum amount of pixels scrolled before triggering
+    const headerHeight = header.outerHeight();
+    
+    // Add a class to set initial state
+    header.addClass('visible');
+    
+    // Calculate proper padding for content
+    function updateContentPadding() {
+        const currentHeaderHeight = header.hasClass('hidden') ? 0 : header.outerHeight();
+        $('.page-container').css('padding-top', (currentHeaderHeight + 40) + 'px');
+    }
+    
+    // Initial padding adjustment
+    updateContentPadding();
+    
+    // Handle window scroll
+    $(window).scroll(function() {
+        const scrollTop = $(this).scrollTop();
+        
+        // Make sure scroll is more than delta
+        if(Math.abs(lastScrollTop - scrollTop) <= delta) {
+            return;
+        }
+        
+        // Add transition class to indicate we're in transition
+        header.addClass('transitioning');
+        
+        // If scrolled down past header height - hide header
+        if(scrollTop > lastScrollTop && scrollTop > headerHeight) {
+            header.removeClass('visible').addClass('hidden');
+            updateContentPadding();
+        } 
+        // If scrolled up - show header
+        else if(scrollTop < lastScrollTop) {
+            header.removeClass('hidden').addClass('visible');
+            updateContentPadding();
+        }
+        
+        // Only adjust padding when sticky to keep header minimal
+        if(scrollTop > 100) {
+            header.addClass('sticky');
+        } else {
+            header.removeClass('sticky');
+        }
+        
+        // Remove transition class after animation completes
+        setTimeout(function() {
+            header.removeClass('transitioning');
+        }, 300); // Same as transition duration (0.3s)
+        
+        // Update last scroll position
+        lastScrollTop = scrollTop;
+    });
+    
+    // Handle window resize to readjust padding
+    $(window).resize(function() {
+        updateContentPadding();
+    });
+});
     </script>
 </body>
 </html>

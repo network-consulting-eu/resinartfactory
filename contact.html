@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Resin & Cement Artisans</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Ubuntu', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
@@ -29,16 +32,55 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 10;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            z-index: 100; /* Higher z-index to ensure header stays above content */
+            background: transparent; /* Fully transparent background */
+            box-shadow: none; /* Remove shadow for transparency */
+            transition: transform 0.3s ease-in-out, background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+        }
+
+        header.visible {
+            transform: translateY(0);
+        }
+
+        header.hidden {
+            transform: translateY(-100%);
+        }
+
+        header.sticky {
+            padding: 10px 40px;
+            background: rgba(255, 255, 255, 0.95); /* Add background when sticky for better readability */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links a {
+            color: #333; /* Dark text for contrast */
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #e6a756; /* Keep gold color for hover/active state */
+        }
+
+        .menu-toggle {
+            color: #333; /* Dark icon */
         }
 
         .logo {
-            color: #333;
-            font-size: 28px;
-            font-weight: 700;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-image {
+            height: auto;
+            width: 200px;
+            transition: 0.3s;
+            /* No blend mode or filters needed for SVG */
         }
 
         .nav-links {
@@ -65,13 +107,14 @@
         /* Page content */
         .page-container {
             max-width: 1200px;
-            margin: 120px auto 60px;
+            margin: 120px auto 60px; /* Increased top margin to ensure space below header */
             padding: 0 20px;
         }
 
         .page-title {
             text-align: center;
             margin-bottom: 60px;
+            padding-top: 40px; /* Added padding to create more space between header and title */
         }
 
         .page-title h1 {
@@ -279,7 +322,7 @@
                 left: -100%;
                 width: 100%;
                 height: calc(100% - 80px);
-                background: rgba(255, 255, 255, 0.95);
+                background: rgba(245, 245, 245, 0.9); /* Light gray background with transparency */
                 flex-direction: column;
                 align-items: center;
                 justify-content: flex-start;
@@ -293,6 +336,11 @@
 
             .nav-links li {
                 margin: 15px 0;
+            }
+            
+            .nav-links a {
+                color: #333 !important; /* Force dark text in mobile menu */
+                font-size: 20px;
             }
 
             .contact-container {
@@ -308,7 +356,7 @@
 </head>
 <body>
     <header>
-        <a href="index.html" class="logo">RESIN & CEMENT</a>
+        <a href="index.html" class="logo"><img src="images/logo-resinartfactory.svg" alt="Resin Art Factory Logo" class="logo-image"></a>
         <div class="menu-toggle">☰</div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
@@ -407,19 +455,73 @@
     </div>
 
     <script>
-        $(document).ready(function() {
-            // Mobile menu toggle
-            $('.menu-toggle').click(function() {
-                $('.nav-links').toggleClass('active');
-            });
+// Add this JavaScript to all your pages (inside the $(document).ready function)
+
+$(document).ready(function() {
+    // Variables
+    let lastScrollTop = 0;
+    const header = $('header');
+    const delta = 10; // Minimum amount of pixels scrolled before triggering header hide/show
+    const headerHeight = header.outerHeight();
+    
+    // Add a class to set initial state
+    header.addClass('visible');
+    
+    // Add CSS for hide/show animations
+    const style = `
+        <style>
+            header {
+                transition: transform 0.3s ease-in-out;
+            }
+            header.visible {
+                transform: translateY(0);
+            }
+            header.hidden {
+                transform: translateY(-100%);
+            }
             
-            // Form submission (for demonstration)
-            $('#contactForm').submit(function(e) {
-                e.preventDefault();
-                alert('Thank you for your message! We will get back to you soon.');
-                $(this).trigger('reset');
-            });
-        });
+            /* Add padding to first content element to prevent overlap */
+            .page-container {
+                padding-top: ${headerHeight + 40}px !important;
+            }
+            
+            /* Home page specific adjustments */
+            body.home .content {
+                padding-top: 100px;
+            }
+        </style>
+    `;
+    $('head').append(style);
+    
+    // Function to handle scroll
+    $(window).scroll(function() {
+        const scrollTop = $(this).scrollTop();
+        
+        // Make sure scroll is more than delta
+        if(Math.abs(lastScrollTop - scrollTop) <= delta) {
+            return;
+        }
+        
+        // Scrolling down and past header height
+        if(scrollTop > lastScrollTop && scrollTop > headerHeight) {
+            header.removeClass('visible').addClass('hidden');
+        } 
+        // Scrolling up
+        else if(scrollTop < lastScrollTop) {
+            header.removeClass('hidden').addClass('visible');
+        }
+        
+        // Update last scroll position
+        lastScrollTop = scrollTop;
+        
+        // Add sticky class when scrolled
+        if(scrollTop > 100) {
+            header.addClass('sticky');
+        } else {
+            header.removeClass('sticky');
+        }
+    });
+});
     </script>
 </body>
 </html>
