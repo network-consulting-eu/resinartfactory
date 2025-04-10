@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>About Us - Resin Art Factory Constanța | Epoxy Resin & Microcement Tables</title>
+    <meta name="description"
+        content="Learn about Resin Art Factory Constanța, a workshop specializing in creating unique epoxy resin and wood furniture, as well as decorative microcement finishes.">
+    <meta name="keywords"
+        content="about us resin art factory, resin art workshop history, resin tables constanța, decorative microcement, interior design constanta, resin art team">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Resin Art Factory">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.resinartfactory.ro/about-us.html">
+    <meta property="og:title" content="About Us - Resin Art Factory Constanța">
+    <meta property="og:description"
+        content="Learn about Resin Art Factory Constanța, a workshop specializing in creating unique epoxy resin and wood furniture, as well as decorative microcement finishes.">
+    <meta property="og:image" content="https://www.resinartfactory.ro/images/og-image-about.jpg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.resinartfactory.ro/about-us.html">
+    <meta property="twitter:title" content="About Us - Resin Art Factory Constanța">
+    <meta property="twitter:description"
+        content="Learn about Resin Art Factory Constanța, a workshop specializing in creating unique epoxy resin and wood furniture, as well as decorative microcement finishes.">
+    <meta property="og:image" content="https://www.resinartfactory.ro/images/og-image-about.jpg">
+
+    <link rel="canonical" href="https://www.resinartfactory.ro/about-us.html">
+
+    <link rel="alternate" hreflang="en" href="https://www.resinartfactory.ro/about-us.html">
+    <link rel="alternate" hreflang="ro" href="https://www.resinartfactory.ro/about-us-ro.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": "About Us - Resin Art Factory Constanța",
+      "description": "Learn more about Resin Art Factory Constanța, our workshop specializing in creating unique epoxy resin and wood furniture, as well as decorative microcement finishes.",
+      "url": "https://www.resinartfactory.ro/about-us.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "url": "https://www.resinartfactory.ro",
+        "name": "Resin Art Factory"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Resin Art Factory Constanța",
+      "description": "Workshop specializing in creating unique epoxy resin and wood furniture, as well as applying decorative microcement finishes.",
+      "url": "https://www.resinartfactory.ro",
+      "logo": "https://www.resinartfactory.ro/images/logo-resinartfactory-black.svg",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Constanța",
+        "addressRegion": "CT",
+        "addressCountry": "RO"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+40740157070",
+        "email": "office@resinartfactory.ro",
+        "contactType": "customer service"
+      },
+      "sameAs": [
+        "https://www.instagram.com/resinartfactory/"
+      ]
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Ubuntu', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            /* Start transparent */
+            background-color: transparent;
+            box-shadow: none;
+            /* Transition transform and background */
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, padding 0.3s ease;
+        }
+
+        /* Style for when header is visible but NOT at the very top */
+        header.sticky {
+            background-color: #f5f5f5;
+            /* Add background */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Optional shadow */
+            padding: 10px 40px;
+            /* Adjust padding */
+        }
+
+        .logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            /* Ensure logo is above default header background */
+        }
+
+        /* Ensure logo/menu stay above content when header has background */
+        header.sticky .logo,
+        header.sticky .nav-links,
+        header.sticky .menu-toggle {
+            z-index: 101;
+        }
+
+        .logo-image {
+            height: auto;
+            width: 200px;
+            transition: 0.3s;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #e6a756;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            color: #333;
+            font-size: 24px;
+        }
+
+        /* Page content */
+        .page-container {
+            max-width: 1200px;
+            /* Add padding top equal to or more than header height to prevent initial overlap */
+            padding-top: 180px;
+            margin: 0 auto 20px;
+            /* Adjusted margin-top */
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 60px;
+            /* Removed padding-top here as it's on page-container now */
+        }
+
+        .page-title h1 {
+            font-size: 42px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .page-title .separator {
+            width: 80px;
+            height: 4px;
+            background: #e6a756;
+            /* Gold accent color */
+            margin: 0 auto;
+        }
+
+        /* Modern hero section */
+        .about-hero {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+            background-color: #f5f5f5;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Left side - Photo */
+        .about-photo {
+            flex: 1;
+            min-width: 300px;
+            max-width: 50%;
+            position: relative;
+            /* Give it a minimum height in case image fails */
+            min-height: 300px;
+        }
+
+        .founder-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .overlay-box {
+            position: absolute;
+            bottom: 20%;
+            right: -50px;
+            background-color: #e6a756;
+            /* Gold color to match index.html */
+            color: white;
+            padding: 40px;
+            max-width: 320px;
+            z-index: 2;
+        }
+
+        .overlay-box h3 {
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        /* Right side - Content */
+        .about-content {
+            flex: 1;
+            min-width: 300px;
+            padding: 60px 40px 60px 80px;
+        }
+
+        .content-subtitle {
+            text-transform: uppercase;
+            font-size: 16px;
+            letter-spacing: 2px;
+            color: #666;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .content-title {
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .content-description {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+        /* Feature list */
+        .feature-list {
+            list-style: none;
+            counter-reset: feature-counter;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-item:last-child {
+            border-bottom: none;
+        }
+
+        .feature-number {
+            font-size: 18px;
+            color: #999;
+            margin-right: 20px;
+            font-weight: 500;
+            min-width: 40px;
+        }
+
+        .feature-number::before {
+            content: counters(feature-counter, ".") "";
+            counter-increment: feature-counter;
+        }
+
+        .feature-content h3 {
+            font-size: 22px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .feature-content p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #e6a756;
+            /* Gold color to match index.html */
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 5px;
+            /* Rounded corners to match index.html */
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #d89743;
+            /* Hover gold color to match index.html */
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button svg {
+            margin-left: 10px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 992px) {
+            .about-photo {
+                max-width: 100%;
+                min-height: 400px;
+                /* Ensure photo area has height */
+            }
+
+            .overlay-box {
+                right: 20px;
+                bottom: 20px;
+                max-width: 280px;
+            }
+
+            .about-content {
+                padding: 40px 20px;
+            }
+
+            .page-container {
+                padding-top: 180px;
+                /* Adjust padding for smaller header */
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 10px 20px;
+                /* Adjust padding for mobile */
+            }
+
+            header.sticky {
+                padding: 5px 20px;
+                /* Adjust sticky padding */
+            }
+
+            .menu-toggle {
+                display: block;
+                z-index: 102;
+                /* Ensure toggle is clickable */
+            }
+
+            .nav-links {
+                position: fixed;
+                /* Adjust top based on potentially smaller sticky header */
+                top: 0;
+                padding-top: 60px;
+                /* Start below header */
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                /* Full height */
+                background: rgba(245, 245, 245, 0.95);
+                /* Slightly less transparent */
+                backdrop-filter: blur(5px);
+                /* Add blur effect */
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                /* Align items to start */
+                transition: 0.5s ease;
+                z-index: 99;
+                /* Below header */
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+                /* Increased spacing */
+            }
+
+            .nav-links a {
+                color: #333 !important;
+                /* Ensure visibility */
+                font-size: 22px;
+                /* Larger font */
+            }
+
+            .about-hero {
+                flex-direction: column;
+            }
+
+            .about-photo {
+                max-width: 100%;
+                /* Takes full width */
+                min-height: 400px;
+            }
+
+            .overlay-box {
+                position: relative;
+                /* Change positioning */
+                bottom: auto;
+                right: auto;
+                max-width: calc(100% - 40px);
+                /* Adjust width */
+                margin: -80px auto 0;
+                /* Overlap photo slightly, center */
+                padding: 30px;
+                /* Adjust padding */
+            }
+
+            .overlay-box h3 {
+                font-size: 24px;
+                /* Adjust size */
+            }
+
+            .about-content {
+                padding: 60px 20px 40px;
+                /* Adjust padding */
+            }
+
+            .content-title {
+                font-size: 36px;
+            }
+
+            .page-container {
+                padding-top: 160px;
+                /* Adjust padding for mobile header */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo"><img src="images/logo-resinartfactory-black.svg" alt="Resin Art Factory Logo"
+                class="logo-image"></a>
+        <div class="menu-toggle">☰</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about-us.html" class="active">About Us</a></li>
+            <li><a href="our-work.html">Our Work</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </header>
+
+    <div class="page-container">
+        <div class="page-title">
+            <h1>About Us</h1>
+            <div class="separator"></div>
+        </div>
+
+        <div class="about-hero">
+            <div class="about-photo">
+                <img src="images/sample600x750.png" alt="Olivia Reynolds, Founder of Resin & Cement Artisans"
+                    class="founder-image">
+                <div class="overlay-box">
+                    <h3>FUNCTIONAL ART WHERE NATURE MEETS DESIGN</h3>
+                </div>
+            </div>
+
+            <div class="about-content">
+                <h4 class="content-subtitle">Our Story</h4>
+                <h2 class="content-title">BLENDING NATURAL MATERIALS WITH CONTEMPORARY DESIGN</h2>
+                <p class="content-description">Founded in 2015, Resin & Cement Artisans began as a small workshop dedicated to
+                    exploring the beauty of natural materials combined with contemporary design techniques. What started as a
+                    passion project quickly evolved into a respected studio known for creating bespoke furniture and
+                    architectural elements.</p>
+
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <div class="feature-number"></div>
+                        <div class="feature-content">
+                            <h3>CREATIVE IDEAS</h3>
+                            <p>Our specialized knowledge in resin casting and micro cement application has positioned us as
+                                leaders in the industry, creating works that are both functional and artistic.</p>
+                        </div>
+                    </li>
+                    <li class="feature-item">
+                        <div class="feature-number"></div>
+                        <div class="feature-content">
+                            <h3>PREMIUM MATERIALS</h3>
+                            <p>We've refined our craft, developing proprietary techniques that allow us to create truly unique
+                                pieces that stand the test of time.</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <a href="our-work.html" class="cta-button">
+                    SOLUTIONS
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Mobile menu toggle
+            $('.menu-toggle').click(function () {
+                $('.nav-links').toggleClass('active');
+                // Optional: Prevent body scroll when mobile menu is open
+                $('body').toggleClass('no-scroll', $('.nav-links').hasClass('active'));
+            });
+
+            // Header elements and state
+            const header = $('header');
+            const aboutPhoto = $('.about-photo');
+            let triggerPoint = 0; // Initialize trigger point
+            let isHidden = false;
+            let lastScrollTop = 0;
+
+            // Function to calculate the trigger point for hiding the header
+            function calculateTriggerPoint() {
+                if (aboutPhoto.length) {
+                    // Hide when the top of the photo is a bit below the header's bottom edge
+                    triggerPoint = aboutPhoto.offset().top - header.outerHeight() - 20; // Adjust '20' pixels buffer as needed
+                } else {
+                    // Fallback if photo element doesn't exist
+                    triggerPoint = 150;
+                }
+                // Ensure trigger point is not negative
+                triggerPoint = Math.max(10, triggerPoint);
+            }
+
+            // Initial calculation
+            calculateTriggerPoint();
+            // Recalculate on load/resize after slight delay for layout shifts
+            $(window).on('load resize', function () {
+                setTimeout(calculateTriggerPoint, 100);
+            });
+
+            $(window).scroll(function () {
+                const scrollTop = $(this).scrollTop();
+
+                // Determine scroll direction
+                const scrollDirection = scrollTop > lastScrollTop ? 'down' : 'up';
+
+                // Condition 1: Scrolled to the very top
+                if (scrollTop <= 10) {
+                    if (isHidden) {
+                        header.css('transform', 'translateY(0)');
+                        isHidden = false;
+                    }
+                    // Always remove sticky class at the top for transparency
+                    header.removeClass('sticky');
+                }
+                // Condition 2: Scrolling Down
+                else if (scrollDirection === 'down') {
+                    // Hide header only if scrolling down PAST the trigger point AND it's not already hidden
+                    if (scrollTop > triggerPoint && !isHidden) {
+                        header.css('transform', 'translateY(-100%)');
+                        header.removeClass('sticky'); // Remove sticky class when hiding
+                        isHidden = true;
+                    } else if (!isHidden) {
+                        // Add sticky class if visible and scrolling down but not yet hidden
+                        header.addClass('sticky');
+                    }
+                }
+                // Condition 3: Scrolling Up (but not to the very top)
+                else if (scrollDirection === 'up') {
+                    // Header remains hidden if it was hidden (will only show at the top - Condition 1)
+                    // If it's currently visible (i.e., wasn't hidden on scroll down yet), keep it sticky
+                    if (!isHidden) {
+                        header.addClass('sticky');
+                    }
+                }
+
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Update last scroll position
+            });
+
+        });
+    </script>
+</body>
+
+</html>
