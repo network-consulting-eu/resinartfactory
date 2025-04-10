@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Resin Art Factory Constanța | Mese din Rășină și Microciment</title>
+    <meta name="description"
+        content="Resin Art Factory Constanța: Artizani specializați în crearea de mese unicat din lemn și rășină epoxidică și finisaje decorative din microciment.">
+    <meta name="keywords"
+        content="mese rasina constanta, microciment decorativ, mobilier rasina, design interior constanta, mese epoxy, rasina epoxidica, pardoseli microciment, pereti decorativi">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Resin Art Factory">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.resinartfactory.ro/index-ro.html">
+    <meta property="og:title" content="Resin Art Factory Constanța | Mese din Rășină și Microciment">
+    <meta property="og:description"
+        content="Resin Art Factory Constanța: Artizani specializați în crearea de mese unicat din lemn și rășină epoxidică și finisaje decorative din microciment.">
+    <meta property="og:image" content="https://www.resinartfactory.ro/images/og-image-homepage.jpg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.resinartfactory.ro/index-ro.html">
+    <meta property="twitter:title" content="Resin Art Factory Constanța | Mese din Rășină și Microciment">
+    <meta property="twitter:description"
+        content="Resin Art Factory Constanța: Artizani specializați în crearea de mese unicat din lemn și rășină epoxidică și finisaje decorative din microciment.">
+    <meta property="twitter:image" content="https://www.resinartfactory.ro/images/og-image-homepage.jpg">
+
+    <link rel="canonical" href="https://www.resinartfactory.ro/index-ro.html">
+
+    <link rel="alternate" hreflang="ro" href="https://www.resinartfactory.ro/index-ro.html">
+    <link rel="alternate" hreflang="en" href="https://www.resinartfactory.com/index.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Resin Art Factory Constanța | Mese din Rășină și Microciment",
+      "description": "Resin Art Factory Constanța: Artizani specializați în crearea de mese unicat din lemn și rășină epoxidică și finisaje decorative din microciment.",
+      "url": "https://www.resinartfactory.ro/index-ro.html",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://www.resinartfactory.ro/images/logo-resinartfactory.svg",
+        "caption": "Logo Resin Art Factory"
+      },
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "Resin Art Factory",
+        "description": "Atelier de artă specializat în mese din rășină epoxidică și microciment.",
+        "url": "https://www.resinartfactory.ro",
+        "logo": "https://www.resinartfactory.ro/images/logo-resinartfactory-black.svg",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Constanța",
+          "addressRegion": "CT",
+          "addressCountry": "RO"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+40740157070",
+          "email": "office@resinartfactory.ro",
+          "contactType": "customer service"
+        },
+        "sameAs": [
+          "https://www.instagram.com/resinartfactory/"
+        ]
+      }
+    }
+    </script>
+
+    <style>
+        /* CSS styles remain identical to index.html */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Ubuntu', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            /* Fallback if image/video fail */
+            color: #333;
+        }
+
+        /* Video Background */
+        .video-background {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Fallback Image for Video */
+        .fallback-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            /* Below video and overlay */
+            display: block;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);
+            /* Overlay darkness */
+            z-index: 0;
+        }
+
+        /* Content */
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1;
+            /* Above overlay */
+            width: 90%;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .main-logo {
+            width: 350px;
+            height: auto;
+            margin-bottom: 40px;
+        }
+
+        .tagline-container {
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .tagline {
+            color: #fff;
+            font-size: 24px;
+            font-weight: 300;
+            line-height: 1.6;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+            position: relative;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .tagline-highlight {
+            color: #e6a756;
+            font-weight: 500;
+        }
+
+        .tagline-decorator {
+            width: 150px;
+            height: 3px;
+            background: #e6a756;
+            margin: 25px auto;
+            position: relative;
+        }
+
+        .tagline-decorator:before,
+        .tagline-decorator:after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #e6a756;
+        }
+
+        .tagline-decorator:before {
+            left: 0;
+        }
+
+        .tagline-decorator:after {
+            right: 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 14px 36px;
+            background: #e6a756;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            font-size: 18px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            margin-top: 15px;
+        }
+
+        .cta-button:hover {
+            background: #d89743;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* --- Language Switch Button CSS (Identical) --- */
+        .language-switch {
+            position: fixed;
+            top: 25px;
+            /* Adjust vertical position */
+            right: 30px;
+            /* Adjust horizontal position */
+            z-index: 10;
+            /* Ensure it's above overlay */
+            display: block;
+            padding: 5px;
+            /* Optional: adds space around the flag */
+            background-color: rgba(255, 255, 255, 0.1);
+            /* Subtle background */
+            border-radius: 50%;
+            /* Makes the background circular */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            line-height: 0;
+            /* Prevents extra space if padding is used */
+        }
+
+        .language-switch:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+            /* More visible on hover */
+            transform: scale(1.1);
+            /* Slight zoom effect */
+        }
+
+        .language-switch .flag-icon {
+            width: 32px;
+            /* Adjust flag size */
+            height: auto;
+            display: block;
+            /* Remove potential extra space */
+            border-radius: 50%;
+            /* Ensures flag fits the circle if it's square */
+        }
+
+        /* Responsive design (Identical) */
+        @media (max-width: 768px) {
+            .main-logo {
+                width: 280px;
+            }
+
+            .tagline {
+                font-size: 18px;
+            }
+
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+
+            /* Adjust flag button position/size for smaller screens if needed */
+            .language-switch {
+                top: 15px;
+                right: 15px;
+                padding: 4px;
+            }
+
+            .language-switch .flag-icon {
+                width: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="video-background">
+        <video autoplay loop muted playsinline>
+            <source src="videos/background-video.mp4" type="video/mp4">
+        </video>
+        <img src="images/resin-table-background.jpg" alt="Fundal cu masă elegantă din rășină" class="fallback-image">
+        <div class="overlay"></div>
+    </div>
+
+    <div class="content">
+        <img src="images/logo-resinartfactory.svg" alt="Logo Resin Art Factory" class="main-logo">
+
+        <div class="tagline-container">
+            <div class="tagline">
+                Locul unde <span class="tagline-highlight">frumusețea naturii</span> întâlnește
+                <span class="tagline-highlight">arta meșteșugului</span>
+            </div>
+            <div class="tagline-decorator"></div>
+            <div class="tagline">
+                Dăm viață unor elemente atemporale ce definesc sufletul spațiului dumneavoastră
+            </div>
+        </div>
+
+        <a href="our-work-ro.html" class="cta-button">Bun Venit</a>
+    </div>
+
+    <a href="index.html" class="language-switch" title="View site in English">
+        <img src="images/flag-us.svg" alt="US Flag" class="flag-icon">
+    </a>
+    <script>
+        // Javascript remains identical
+        $(document).ready(function () {
+            // Video fallback - ensure the fallback image shows if video fails
+            $('video').on('error', function () {
+                console.error("Video failed to load."); // Log error
+                $(this).css('display', 'none'); // Hide video element
+                $('.fallback-image').css('z-index', '-1'); // Ensure fallback is visible below overlay
+            });
+
+        });
+    </script>
+</body>
+
+</html>

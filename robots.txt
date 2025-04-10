@@ -1,0 +1,11 @@
+# robots.txt for resinartfactory.ro
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.resinartfactory.ro/sitemap.xml
+
+# Prevent crawling of admin or system directories
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /admin/
