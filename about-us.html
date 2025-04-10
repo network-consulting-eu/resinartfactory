@@ -106,7 +106,7 @@
         /* Page content */
         .page-container {
             max-width: 1200px;
-            margin: 120px auto 60px; /* Increased top margin to ensure space below header */
+            margin: 40px auto 20px; /* Increased top margin to ensure space below header */
             padding: 0 20px;
             /* Will be adjusted with JavaScript for proper padding */
         }
@@ -114,7 +114,7 @@
         .page-title {
             text-align: center;
             margin-bottom: 60px;
-            padding-top: 40px; /* Added padding to create more space between header and title */
+            padding-top: 10px; /* Added padding to create more space between header and title */
         }
 
         .page-title h1 {
@@ -141,7 +141,7 @@
             flex: 1;
             min-width: 300px;
             height: 400px;
-            background-image: url('/api/placeholder/600/400');
+            background-image: url('images/about-us-photo.svg');
             background-size: cover;
             background-position: center;
             border-radius: 8px;
@@ -371,7 +371,7 @@ $(document).ready(function() {
     // Calculate proper padding for content
     function updateContentPadding() {
         const currentHeaderHeight = header.hasClass('hidden') ? 0 : header.outerHeight();
-        $('.page-container').css('padding-top', (currentHeaderHeight + 40) + 'px');
+        $('.page-container').css('padding-top', (currentHeaderHeight + 20) + 'px');
     }
     
     // Initial padding adjustment
