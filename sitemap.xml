@@ -1,84 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>https://www.resinartfactory.ro/index.html</loc>
-    <lastmod>2025-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://www.resinartfactory.ro/index-ro.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.resinartfactory.ro/index.html"/>
-  </url>
-  <url>
-    <loc>https://www.resinartfactory.ro/index-ro.html</loc>
-    <lastmod>2025-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://www.resinartfactory.ro/index-ro.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.resinartfactory.ro/index.html"/>
-  </url>
-  <url>
-    <loc>https://www.resinartfactory.ro/about-us.html</loc>
-    <lastmod>2025-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://www.resinartfactory.ro/about-us-ro.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.resinartfactory.ro/about-us.html"/>
-  </url>
-  <url>
-    <loc>https://www.resinartfactory.ro/about-us-ro.html</loc>
-    <lastmod>2025-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://www.resinartfactory.ro/about-us-ro.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.resinartfactory.ro/about-us.html"/>
-  </url>
-  <url>
-    <loc>https://www.resinartfactory.ro/our-work.html</loc>
-    <lastmod>2025-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://www.resinartfactory.ro/our-work-ro.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.resinartfactory.ro/our-work.html"/>
-  </url>
-  <url>
-    <loc>https://www.resinartfactory.ro/our-work-ro.html</loc>
-    <lastmod>2025-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://www.resinartfactory.ro/our-work-ro.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.resinartfactory.ro/our-work.html"/>
-  </url>
-  <url>
-    <loc>https://www.resinartfactory.ro/gallery.html</loc>
-    <lastmod>2025-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://www.resinartfactory.ro/gallery-ro.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.resinartfactory.ro/gallery.html"/>
-  </url>
-  <url>
-    <loc>https://www.resinartfactory.ro/gallery-ro.html</loc>
-    <lastmod>2025-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://www.resinartfactory.ro/gallery-ro.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.resinartfactory.ro/gallery.html"/>
-  </url>
-  <url>
-    <loc>https://www.resinartfactory.ro/contact.html</loc>
-    <lastmod>2025-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://www.resinartfactory.ro/contact-ro.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.resinartfactory.ro/contact.html"/>
-  </url>
-  <url>
-    <loc>https://www.resinartfactory.ro/contact-ro.html</loc>
-    <lastmod>2025-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://www.resinartfactory.ro/contact-ro.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.resinartfactory.ro/contact.html"/>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>https://www.resinartfactory.ro/index.html</loc>
+        <lastmod>2025-04-10</lastmod>
+        <changefreq>weekly</changefreq> <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://www.resinartfactory.ro/index-ro.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.resinartfactory.ro/index.html"/>
+    </url>
+    <url>
+        <loc>https://www.resinartfactory.ro/index-ro.html</loc>
+        <lastmod>2025-04-10</lastmod>
+        <changefreq>weekly</changefreq> <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://www.resinartfactory.ro/index-ro.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.resinartfactory.ro/index.html"/>
+    </url>
+    <url>
+        <loc>https://www.resinartfactory.ro/about-us.html</loc>
+        <lastmod>2025-04-10</lastmod>
+        <changefreq>monthly</changefreq> <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://www.resinartfactory.ro/about-us-ro.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.resinartfactory.ro/about-us.html"/>
+    </url>
+    <url>
+        <loc>https://www.resinartfactory.ro/our-work.html</loc>
+        <lastmod>2025-04-10</lastmod>
+        <changefreq>monthly</changefreq> <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://www.resinartfactory.ro/our-work-ro.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.resinartfactory.ro/our-work.html"/>
+    </url>
+    <url>
+        <loc>https://www.resinartfactory.ro/gallery.html</loc>
+        <lastmod>2025-04-10</lastmod>
+        <changefreq>monthly</changefreq> <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://www.resinartfactory.ro/gallery-ro.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.resinartfactory.ro/gallery.html"/>
+    </url>
+    <url>
+        <loc>https://www.resinartfactory.ro/contact.html</loc>
+        <lastmod>2025-04-10</lastmod>
+        <changefreq>monthly</changefreq> <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="ro" href="https://www.resinartfactory.ro/contact-ro.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.resinartfactory.com/contact.html"/>
+    </url>
 </urlset>

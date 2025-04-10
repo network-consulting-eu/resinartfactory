@@ -8,7 +8,7 @@
     <meta name="description"
         content="Explore Resin Art Factory Constanța's work: custom epoxy resin and wood tables, decorative microcement finishes for walls, floors, and furniture.">
     <meta name="keywords"
-        content="resin tables constanța, microcement services, epoxy resin furniture, custom furniture constanta, microcement finishes, interior design constanta">
+        content="resin tables constanța, microcement services, epoxy resin furniture, custom furniture constanța, microcement finishes, interior design constanța">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Resin Art Factory">
 
@@ -22,9 +22,9 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.resinartfactory.ro/our-work.html">
     <meta property="twitter:title" content="Our Work - Resin Art Factory Constanța">
-    <meta property="twitter:description"
+    <meta property="og:description"
         content="Explore Resin Art Factory Constanța's work: custom epoxy resin and wood tables, decorative microcement finishes for walls, floors, and furniture.">
-    <meta property="twitter:image" content="https://www.resinartfactory.ro/images/og-image-services.jpg">
+    <meta property="og:image" content="https://www.resinartfactory.ro/images/og-image-services.jpg">
 
     <link rel="canonical" href="https://www.resinartfactory.ro/our-work.html">
 
@@ -164,8 +164,16 @@
             color: #e6a756;
         }
 
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            color: #333;
+            font-size: 24px;
+            z-index: 102;
+        }
+
         /* Page content */
-        /* Increased Specificity by adding 'body' */
+        /* Increased Specificity and using padding-top */
         body .page-container {
             max-width: 1200px;
             /* Using your 180px value */
@@ -204,6 +212,7 @@
         /* Tab navigation */
         .tab-navigation {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             margin-bottom: 50px;
         }
@@ -489,7 +498,7 @@
 
             <div class="feature-grid">
                 <div class="feature-item">
-                    <div class="feature-image" style="background-image: url('images/our-work/river-table.jpeg');"></div>
+                    <div class="feature-image" style="background-image: url('images/our-work/river-table.jpeg');" aria-label="A blue epoxy resin river table with a dark wood finish."></div>
                     <div class="feature-content">
                         <h3>River Tables</h3>
                         <p>Our signature river tables feature stunning blue resin "rivers" flowing through natural wood slabs, creating a breathtaking visual effect that mimics water flowing through a landscape.</p>
@@ -497,7 +506,7 @@
                 </div>
 
                 <div class="feature-item">
-                     <div class="feature-image" style="background-image: url('images/our-work/ocean-table.jpeg');"></div>
+                     <div class="feature-image" style="background-image: url('images/our-work/ocean-table.jpeg');" aria-label="A rectangular table with swirling blue and white resin resembling ocean waves."></div>
                     <div class="feature-content">
                         <h3>Ocean Tables</h3>
                         <p>Inspired by coastal scenes, our ocean tables incorporate multiple layers of colored resin to create depth and movement, perfectly capturing the essence of ocean waves and shorelines.</p>
@@ -505,7 +514,7 @@
                 </div>
 
                 <div class="feature-item">
-                     <div class="feature-image" style="background-image: url('images/our-work/geode-table.jpeg');"></div>
+                     <div class="feature-image" style="background-image: url('images/our-work/geode-table.jpeg');" aria-label="A round table with a resin design resembling a geode with crystal-like patterns."></div>
                     <div class="feature-content">
                         <h3>Geode Tables</h3>
                         <p>These unique pieces mimic natural geode formations using specialized techniques that create crystalline patterns within the resin, often incorporating actual gemstones and minerals.</p>
@@ -545,7 +554,7 @@
 
             <div class="feature-grid">
                 <div class="feature-item">
-                    <div class="feature-image" style="background-image: url('images/our-work/interior-wall.jpeg');"></div>
+                    <div class="feature-image" style="background-image: url('images/our-work/interior-wall.jpeg');" aria-label="A textured micro cement wall in a modern interior."></div>
                     <div class="feature-content">
                         <h3>Interior Walls</h3>
                         <p>Our micro cement wall finishes create stunning, textured surfaces with a contemporary industrial aesthetic, available in a wide range of custom colors and finishes.</p>
@@ -553,7 +562,7 @@
                 </div>
 
                 <div class="feature-item">
-                    <div class="feature-image" style="background-image: url('images/our-work/decorative-flooring.jpeg');"></div>
+                    <div class="feature-image" style="background-image: url('images/our-work/decorative-flooring.jpeg');" aria-label="A seamless micro cement floor in a living room."></div>
                     <div class="feature-content">
                         <h3>Decorative Flooring</h3>
                         <p>Durable, seamless flooring solutions that combine beauty with functionality, perfect for residential and commercial spaces requiring a modern, low-maintenance finish.</p>
@@ -561,7 +570,7 @@
                 </div>
 
                 <div class="feature-item">
-                    <div class="feature-image" style="background-image: url('images/our-work/custom-furniture.jpeg');"></div>
+                    <div class="feature-image" style="background-image: url('images/our-work/custom-furniture.jpeg');" aria-label="A micro cement countertop in a kitchen."></div>
                     <div class="feature-content">
                         <h3>Custom Furniture</h3>
                         <p>From sleek countertops to entire furniture pieces, our micro cement applications create striking monolithic forms with a sophisticated, minimalist appeal.</p>

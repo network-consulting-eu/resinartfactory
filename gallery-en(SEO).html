@@ -46,17 +46,69 @@
       "creator": {
         "@type": "Organization",
         "name": "Resin Art Factory"
-      }
-      /* Add more image details if needed
+      },
       "associatedMedia": [
         {
           "@type": "ImageObject",
           "contentUrl": "https://www.resinartfactory.ro/images/gallery/wallnut-river-table-400-600.png",
-          "caption": "Walnut River Table"
+          "caption": "Walnut River Table. Custom dining table with turquoise resin river."
         },
-        ...
+        {
+          "@type": "ImageObject",
+          "contentUrl": "https://www.resinartfactory.ro/images/gallery/maple-coffee-table-400-400.png",
+          "caption": "Maple Coffee Table. Live edge with amber resin inlay."
+        },
+        {
+          "@type": "ImageObject",
+          "contentUrl": "https://www.resinartfactory.ro/images/gallery/corporate-conference-table-800-600.png",
+          "caption": "Corporate Conference Table. 10-foot executive meeting table with deep blue resin."
+        },
+        {
+          "@type": "ImageObject",
+          "contentUrl": "https://www.resinartfactory.ro/images/gallery/geode-side-table-400-400.png",
+          "caption": "Geode Side Table. Crystal-inspired design with amethyst inclusions."
+        },
+        {
+          "@type": "ImageObject",
+          "contentUrl": "https://www.resinartfactory.ro/images/gallery/kitchen-island-top-800-400.png",
+          "caption": "Kitchen Island Top. Custom resin and white oak for modern kitchen."
+        },
+        {
+          "@type": "ImageObject",
+          "contentUrl": "https://www.resinartfactory.ro/images/gallery/minimalist-bathroom-400-400.png",
+          "caption": "Minimalist Bathroom. Complete micro cement bathroom renovation."
+        },
+        {
+          "@type": "ImageObject",
+          "contentUrl": "https://www.resinartfactory.ro/images/gallery/boutique-retail-floor-800-400.png",
+          "caption": "Boutique Retail Floor. Custom-tinted micro cement flooring."
+        },
+        {
+          "@type": "ImageObject",
+          "contentUrl": "https://www.resinartfactory.ro/images/gallery/feature-wall-400-600.png",
+          "caption": "Feature Wall. Textured micro cement wall treatment."
+        },
+        {
+          "@type": "ImageObject",
+          "contentUrl": "images/gallery/restaurant-bar-counter.jpeg",
+          "caption": "Restaurant Bar Counter. Polished micro cement with integrated lighting."
+        },
+        {
+          "@type": "ImageObject",
+          "contentUrl": "https://www.resinartfactory.ro/images/gallery/modern-kitchen-800-600.png",
+          "caption": "Modern Kitchen. Complete kitchen renovation with microcement surfaces."
+        },
+        {
+          "@type": "ImageObject",
+          "contentUrl": "https://www.resinartfactory.ro/images/gallery/hotel-lobby-installation-800-400.png",
+          "caption": "Hotel Lobby Installation. Custom reception desk combining both materials."
+        },
+        {
+          "@type": "ImageObject",
+          "contentUrl": "https://www.resinartfactory.ro/images/gallery/ocean-table-400-400.png",
+          "caption": "Ocean Table. Multi-layered blue resin mimicking ocean waves."
+        }
       ]
-      */
     }
     </script>
 
@@ -73,11 +125,11 @@
             background-color: #f5f5f5;
             color: #333;
         }
+         /* Add this if using body scroll prevention */
+         body.no-scroll {
+             overflow: hidden;
+         }
 
-        /* Add this if using body scroll prevention */
-        body.no-scroll {
-            overflow: hidden;
-        }
 
         /* --- Updated Navigation Styles --- */
         header {
@@ -90,35 +142,29 @@
             justify-content: space-between;
             align-items: center;
             z-index: 100;
-            background-color: transparent;
-            /* Start transparent */
+            background-color: transparent; /* Start transparent */
             box-shadow: none;
             transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, padding 0.3s ease;
         }
 
         header.sticky {
-            background-color: #f5f5f5;
-            /* Add background */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            /* Optional shadow */
-            padding: 10px 40px;
-            /* Adjust padding */
+            background-color: #f5f5f5; /* Add background */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional shadow */
+            padding: 10px 40px; /* Adjust padding */
         }
 
-        header.sticky .logo,
-        header.sticky .nav-links,
-        header.sticky .menu-toggle {
-            z-index: 101;
-            /* Ensure these are above sticky background */
-        }
+         header.sticky .logo,
+         header.sticky .nav-links,
+         header.sticky .menu-toggle {
+            z-index: 101; /* Ensure these are above sticky background */
+         }
 
         .logo {
             text-decoration: none;
             display: flex;
             align-items: center;
             position: relative;
-            z-index: 2;
-            /* Above default transparent background */
+            z-index: 2; /* Above default transparent background */
         }
 
         .logo-image {
@@ -137,56 +183,48 @@
         }
 
         .nav-links a {
-            color: #333;
-            /* Dark text for default state */
+            color: #333; /* Dark text for default state */
             text-decoration: none;
             font-weight: 500;
             font-size: 18px;
             transition: 0.3s;
         }
 
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: #e6a756;
-            /* Gold color for hover/active */
+        .nav-links a:hover, .nav-links a.active {
+            color: #e6a756; /* Gold color for hover/active */
         }
 
-        .menu-toggle {
-            display: none;
-            cursor: pointer;
-            color: #333;
-            /* Dark icon */
-            font-size: 24px;
-            z-index: 102;
-            /* Above sticky background */
-        }
-
+         .menu-toggle {
+             display: none;
+             cursor: pointer;
+             color: #333; /* Dark icon */
+             font-size: 24px;
+             z-index: 102; /* Above sticky background */
+         }
         /* --- End Updated Navigation Styles --- */
 
-        /* Page content */
-        /* Increased Specificity and using padding-top */
-        body .page-container {
-            max-width: 1200px;
-            /* Consistent padding top */
-            padding-top: 180px;
-            /* Removed margin-top, use padding instead */
-            margin: 0 auto 60px;
-            padding-left: 20px;
-            padding-right: 20px;
-            box-sizing: border-box;
-        }
 
-        /* Reset potential positioning issues on page-title */
-        .page-title {
-            position: relative;
-            /* Ensure default layout behavior */
-            margin-top: 0;
-            /* Prevent negative margins pulling it up */
-            text-align: center;
-            margin-bottom: 60px;
-            /* Keep original margin-bottom */
-            /* Removed padding-top: 40px; as container handles spacing */
-        }
+        /* Page content */
+         /* Increased Specificity and using padding-top */
+         body .page-container {
+             max-width: 1200px;
+             /* Consistent padding top */
+             padding-top: 180px;
+             /* Removed margin-top, use padding instead */
+             margin: 0 auto 60px;
+             padding-left: 20px;
+             padding-right: 20px;
+             box-sizing: border-box;
+         }
+
+         /* Reset potential positioning issues on page-title */
+         .page-title {
+             position: relative; /* Ensure default layout behavior */
+             margin-top: 0; /* Prevent negative margins pulling it up */
+             text-align: center;
+             margin-bottom: 60px; /* Keep original margin-bottom */
+             /* Removed padding-top: 40px; as container handles spacing */
+         }
 
         .page-title h1 {
             font-size: 42px;
@@ -223,8 +261,7 @@
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .filter-button.active,
-        .filter-button:hover {
+        .filter-button.active, .filter-button:hover {
             background: #e6a756;
             color: #fff;
         }
@@ -466,51 +503,51 @@
 
         <div class="gallery-container">
             <div class="gallery-item tall" data-category="resin residential">
-                <img src="images/gallery/wallnut-river-table-400-600.png" alt="Walnut River Table">
+                <img src="images/gallery/wallnut-river-table-400-600.png" alt="Turquoise epoxy resin river table with walnut wood">
                 <div class="item-overlay"><h3>Walnut River Table</h3><p>Custom dining table with turquoise resin river</p></div>
             </div>
             <div class="gallery-item" data-category="resin residential">
-                <img src="images/gallery/maple-coffee-table-400-400.png" alt="Maple Coffee Table">
+                <img src="images/gallery/maple-coffee-table-400-400.png" alt="Maple coffee table with amber resin inlay">
                 <div class="item-overlay"><h3>Maple Coffee Table</h3><p>Live edge with amber resin inlay</p></div>
             </div>
             <div class="gallery-item large" data-category="resin commercial">
-                <img src="images/gallery/corporate-conference-table-800-600.png" alt="Corporate Conference Table">
+                <img src="images/gallery/corporate-conference-table-800-600.png" alt="Long corporate conference table with blue resin accents">
                 <div class="item-overlay"><h3>Corporate Conference Table</h3><p>10-foot executive meeting table with deep blue resin</p></div>
             </div>
             <div class="gallery-item" data-category="resin residential">
-                <img src="images/gallery/geode-side-table-400-400.png" alt="Geode Side Table">
+                <img src="images/gallery/geode-side-table-400-400.png" alt="Amethyst geode side table with resin">
                 <div class="item-overlay"><h3>Geode Side Table</h3><p>Crystal-inspired design with amethyst inclusions</p></div>
             </div>
             <div class="gallery-item wide" data-category="resin residential">
-                <img src="images/gallery/kitchen-island-top-800-400.png" alt="Kitchen Island Top">
+                <img src="images/gallery/kitchen-island-top-800-400.png" alt="White oak kitchen island top with epoxy resin">
                 <div class="item-overlay"><h3>Kitchen Island Top</h3><p>Custom resin and white oak for modern kitchen</p></div>
             </div>
             <div class="gallery-item" data-category="cement residential">
-                <img src="images/gallery/minimalist-bathroom-400-400.png" alt="Minimalist Bathroom">
+                <img src="images/gallery/minimalist-bathroom-400-400.png" alt="Minimalist bathroom with microcement walls and floor">
                 <div class="item-overlay"><h3>Minimalist Bathroom</h3><p>Complete micro cement bathroom renovation</p></div>
             </div>
             <div class="gallery-item wide" data-category="cement commercial">
-                <img src="images/gallery/boutique-retail-floor-800-400.png" alt="Boutique Retail Floor">
+                <img src="images/gallery/boutique-retail-floor-800-400.png" alt="Microcement flooring in a boutique retail space">
                 <div class="item-overlay"><h3>Boutique Retail Floor</h3><p>Custom-tinted micro cement flooring</p></div>
             </div>
             <div class="gallery-item tall" data-category="cement residential">
-                <img src="images/gallery/feature-wall-400-600.png" alt="Feature Wall">
+                <img src="images/gallery/feature-wall-400-600.png" alt="Textured microcement feature wall in a living room">
                 <div class="item-overlay"><h3>Feature Wall</h3><p>Textured micro cement wall treatment</p></div>
             </div>
             <div class="gallery-item" data-category="cement commercial">
-                <img src="images/gallery/minimalist-bathroom-400-400.png" alt="Restaurant Bar Counter">
+                <img src="images/gallery/restaurant-bar-counter.jpeg" alt="Polished microcement bar counter in a restaurant">
                 <div class="item-overlay"><h3>Restaurant Bar Counter</h3><p>Polished micro cement with integrated lighting</p></div>
             </div>
             <div class="gallery-item large" data-category="cement residential">
-                <img src="images/gallery/modern-kitchen-800-600.png" alt="Modern Kitchen">
+                <img src="images/gallery/modern-kitchen-800-600.png" alt="Modern kitchen renovation with microcement surfaces">
                 <div class="item-overlay"><h3>Modern Kitchen</h3><p>Complete kitchen renovation with micro cement surfaces</p></div>
             </div>
             <div class="gallery-item wide" data-category="resin cement commercial">
-                <img src="images/gallery/hotel-lobby-installation-800-400.png" alt="Hotel Lobby Installation">
+                <img src="images/gallery/hotel-lobby-installation-800-400.png" alt="Hotel reception desk combining resin and wood">
                 <div class="item-overlay"><h3>Hotel Lobby Installation</h3><p>Custom reception desk combining both materials</p></div>
             </div>
             <div class="gallery-item" data-category="resin residential">
-                <img src="images/gallery/ocean-table-400-400.png" alt="Ocean Table">
+                <img src="images/gallery/ocean-table-400-400.png" alt="Blue resin ocean table with wave effect">
                 <div class="item-overlay"><h3>Ocean Table</h3><p>Multi-layered blue resin mimicking ocean waves</p></div>
             </div>
         </div>

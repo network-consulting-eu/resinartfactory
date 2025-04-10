@@ -1,11 +1,20 @@
 # robots.txt for resinartfactory.ro
+
 User-agent: *
 Allow: /
 
 # Sitemap location
 Sitemap: https://www.resinartfactory.ro/sitemap.xml
 
-# Prevent crawling of admin or system directories
+# Important: Be specific with Disallow rules
 Disallow: /cgi-bin/
 Disallow: /tmp/
 Disallow: /admin/
+
+# Common folders to potentially disallow (adjust as needed)
+Disallow: /includes/
+Disallow: /js/
+Disallow: /css/
+
+# Adjusting crawl delay (use with caution!)
+# Crawl-delay: 10 # 10-second delay (use only if your server is overloaded)
