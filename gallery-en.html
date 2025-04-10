@@ -21,8 +21,13 @@
             background-color: #f5f5f5;
             color: #333;
         }
+         /* Add this if using body scroll prevention */
+         body.no-scroll {
+             overflow: hidden;
+         }
 
-        /* Navigation */
+
+        /* --- Updated Navigation Styles --- */
         header {
             position: fixed;
             top: 0;
@@ -32,55 +37,36 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 100; /* Higher z-index to ensure header stays above content */
-            background: transparent; /* Fully transparent background */
-            box-shadow: none; /* Remove shadow for transparency */
-            transition: transform 0.3s ease-in-out, background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
-        }
-
-        header.visible {
-            transform: translateY(0);
-        }
-
-        header.hidden {
-            transform: translateY(-100%);
+            z-index: 100;
+            background-color: transparent; /* Start transparent */
+            box-shadow: none;
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, padding 0.3s ease;
         }
 
         header.sticky {
-            padding: 10px 40px;
-            background: rgba(255, 255, 255, 0.95); /* Add background when sticky for better readability */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #f5f5f5; /* Add background */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional shadow */
+            padding: 10px 40px; /* Adjust padding */
         }
 
-        .nav-links a {
-            color: #333; /* Dark text for contrast */
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 18px;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: #e6a756; /* Keep gold color for hover/active state */
-        }
-
-        .menu-toggle {
-            color: #333; /* Dark icon */
-        }
+         header.sticky .logo,
+         header.sticky .nav-links,
+         header.sticky .menu-toggle {
+            z-index: 101; /* Ensure these are above sticky background */
+         }
 
         .logo {
             text-decoration: none;
             display: flex;
             align-items: center;
             position: relative;
-            z-index: 2;
+            z-index: 2; /* Above default transparent background */
         }
 
         .logo-image {
             height: auto;
             width: 200px;
             transition: 0.3s;
-            /* No blend mode or filters needed for SVG */
         }
 
         .nav-links {
@@ -93,7 +79,7 @@
         }
 
         .nav-links a {
-            color: #333;
+            color: #333; /* Dark text for default state */
             text-decoration: none;
             font-weight: 500;
             font-size: 18px;
@@ -101,21 +87,40 @@
         }
 
         .nav-links a:hover, .nav-links a.active {
-            color: #e6a756;
+            color: #e6a756; /* Gold color for hover/active */
         }
+
+         .menu-toggle {
+             display: none;
+             cursor: pointer;
+             color: #333; /* Dark icon */
+             font-size: 24px;
+             z-index: 102; /* Above sticky background */
+         }
+        /* --- End Updated Navigation Styles --- */
+
 
         /* Page content */
-        .page-container {
-            max-width: 1200px;
-            margin: 120px auto 60px; /* Increased top margin to ensure space below header */
-            padding: 0 20px;
-        }
+         /* Increased Specificity and using padding-top */
+         body .page-container {
+             max-width: 1200px;
+             /* Consistent padding top */
+             padding-top: 180px;
+             /* Removed margin-top, use padding instead */
+             margin: 0 auto 60px;
+             padding-left: 20px;
+             padding-right: 20px;
+             box-sizing: border-box;
+         }
 
-        .page-title {
-            text-align: center;
-            margin-bottom: 60px;
-            padding-top: 40px; /* Added padding to create more space between header and title */
-        }
+         /* Reset potential positioning issues on page-title */
+         .page-title {
+             position: relative; /* Ensure default layout behavior */
+             margin-top: 0; /* Prevent negative margins pulling it up */
+             text-align: center;
+             margin-bottom: 60px; /* Keep original margin-bottom */
+             /* Removed padding-top: 40px; as container handles spacing */
+         }
 
         .page-title h1 {
             font-size: 42px;
@@ -297,64 +302,77 @@
             cursor: pointer;
         }
 
-        /* Mobile menu */
-        .menu-toggle {
-            display: none;
-            cursor: pointer;
-            color: #333;
-            font-size: 24px;
-        }
-
         /* Responsive design */
+         @media (max-width: 992px) {
+             /* Add specificity here too */
+             body .page-container {
+                 padding-top: 200px; /* Adjust tablet padding */
+             }
+             header.sticky {
+                 padding: 10px 30px;
+             }
+             header {
+                 padding: 15px 30px;
+             }
+         }
+
         @media (max-width: 768px) {
+             header {
+                 padding: 10px 20px;
+             }
+             header.sticky {
+                  padding: 5px 20px;
+             }
             .menu-toggle {
                 display: block;
             }
-
             .nav-links {
                 position: fixed;
-                top: 80px;
+                 top: 0; /* Align to top */
+                 padding-top: 70px; /* Adjust based on mobile header height */
                 left: -100%;
                 width: 100%;
-                height: calc(100% - 80px);
-                background: rgba(245, 245, 245, 0.9); /* Light gray background with transparency */
+                 height: 100vh; /* Full height */
+                background: rgba(245, 245, 245, 0.95); /* Use consistent mobile nav background */
+                 backdrop-filter: blur(5px); /* Optional blur */
                 flex-direction: column;
                 align-items: center;
-                justify-content: flex-start;
-                padding-top: 40px;
-                transition: 0.5s;
+                justify-content: flex-start; /* Align start */
+                transition: 0.5s ease; /* Use ease transition */
+                 z-index: 99; /* Ensure it's below header */
             }
-
             .nav-links.active {
                 left: 0;
             }
-
             .nav-links li {
-                margin: 15px 0;
+                margin: 20px 0; /* Consistent spacing */
             }
-            
             .nav-links a {
-                color: #333 !important; /* Force dark text in mobile menu */
-                font-size: 20px;
+                color: #333 !important; /* Ensure text visibility */
+                font-size: 22px; /* Consistent font size */
             }
+            /* Add specificity here too */
+             body .page-container {
+                 padding-top: 180px; /* Adjust mobile padding */
+             }
 
             .gallery-container {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                 /* Adjust grid for smaller screens if needed */
+                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                 grid-auto-rows: 200px; /* Smaller rows on mobile */
             }
-
             .gallery-item.wide, .gallery-item.large {
-                grid-column: span 1;
+                 grid-column: span 1; /* Stack items */
             }
-
             .gallery-item.tall, .gallery-item.large {
-                grid-row: span 1;
+                 grid-row: span 1; /* Stack items */
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <a href="index.html" class="logo"><img src="images/logo-resinartfactory.svg" alt="Resin Art Factory Logo" class="logo-image"></a>
+        <a href="index.html" class="logo"><img src="images/logo-resinartfactory-black.svg" alt="Resin Art Factory Logo" class="logo-image"></a>
         <div class="menu-toggle">☰</div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
@@ -380,108 +398,57 @@
         </div>
 
         <div class="gallery-container">
-            <!-- Resin Table Projects -->
             <div class="gallery-item tall" data-category="resin residential">
-                <img src="/api/placeholder/400/600" alt="Walnut River Table">
-                <div class="item-overlay">
-                    <h3>Walnut River Table</h3>
-                    <p>Custom dining table with turquoise resin river</p>
-                </div>
+                <img src="images/gallery/wallnut-river-table-400-600.png" alt="Walnut River Table">
+                <div class="item-overlay"><h3>Walnut River Table</h3><p>Custom dining table with turquoise resin river</p></div>
             </div>
-
             <div class="gallery-item" data-category="resin residential">
-                <img src="/api/placeholder/400/400" alt="Maple Coffee Table">
-                <div class="item-overlay">
-                    <h3>Maple Coffee Table</h3>
-                    <p>Live edge with amber resin inlay</p>
-                </div>
+                <img src="images/gallery/maple-coffee-table-400-400.png" alt="Maple Coffee Table">
+                <div class="item-overlay"><h3>Maple Coffee Table</h3><p>Live edge with amber resin inlay</p></div>
             </div>
-
             <div class="gallery-item large" data-category="resin commercial">
-                <img src="/api/placeholder/800/600" alt="Corporate Conference Table">
-                <div class="item-overlay">
-                    <h3>Corporate Conference Table</h3>
-                    <p>10-foot executive meeting table with deep blue resin</p>
-                </div>
+                <img src="images/gallery/corporate-conference-table-800-600.png" alt="Corporate Conference Table">
+                <div class="item-overlay"><h3>Corporate Conference Table</h3><p>10-foot executive meeting table with deep blue resin</p></div>
             </div>
-
             <div class="gallery-item" data-category="resin residential">
-                <img src="/api/placeholder/400/400" alt="Geode Side Table">
-                <div class="item-overlay">
-                    <h3>Geode Side Table</h3>
-                    <p>Crystal-inspired design with amethyst inclusions</p>
-                </div>
+                <img src="images/gallery/geode-side-table-400-400.png" alt="Geode Side Table">
+                <div class="item-overlay"><h3>Geode Side Table</h3><p>Crystal-inspired design with amethyst inclusions</p></div>
             </div>
-
             <div class="gallery-item wide" data-category="resin residential">
-                <img src="/api/placeholder/800/400" alt="Kitchen Island Top">
-                <div class="item-overlay">
-                    <h3>Kitchen Island Top</h3>
-                    <p>Custom resin and white oak for modern kitchen</p>
-                </div>
+                <img src="images/gallery/kitchen-island-top-800-400.png" alt="Kitchen Island Top">
+                <div class="item-overlay"><h3>Kitchen Island Top</h3><p>Custom resin and white oak for modern kitchen</p></div>
             </div>
-
-            <!-- Micro Cement Projects -->
             <div class="gallery-item" data-category="cement residential">
-                <img src="/api/placeholder/400/400" alt="Minimalist Bathroom">
-                <div class="item-overlay">
-                    <h3>Minimalist Bathroom</h3>
-                    <p>Complete micro cement bathroom renovation</p>
-                </div>
+                <img src="images/gallery/minimalist-bathroom-400-400.png" alt="Minimalist Bathroom">
+                <div class="item-overlay"><h3>Minimalist Bathroom</h3><p>Complete micro cement bathroom renovation</p></div>
             </div>
-
             <div class="gallery-item wide" data-category="cement commercial">
-                <img src="/api/placeholder/800/400" alt="Boutique Retail Floor">
-                <div class="item-overlay">
-                    <h3>Boutique Retail Floor</h3>
-                    <p>Custom-tinted micro cement flooring</p>
-                </div>
+                <img src="images/gallery/boutique-retail-floor-800-400.png" alt="Boutique Retail Floor">
+                <div class="item-overlay"><h3>Boutique Retail Floor</h3><p>Custom-tinted micro cement flooring</p></div>
             </div>
-
             <div class="gallery-item tall" data-category="cement residential">
-                <img src="/api/placeholder/400/600" alt="Feature Wall">
-                <div class="item-overlay">
-                    <h3>Feature Wall</h3>
-                    <p>Textured micro cement wall treatment</p>
-                </div>
+                <img src="images/gallery/feature-wall-400-600.png" alt="Feature Wall">
+                <div class="item-overlay"><h3>Feature Wall</h3><p>Textured micro cement wall treatment</p></div>
             </div>
-
             <div class="gallery-item" data-category="cement commercial">
-                <img src="/api/placeholder/400/400" alt="Restaurant Bar Counter">
-                <div class="item-overlay">
-                    <h3>Restaurant Bar Counter</h3>
-                    <p>Polished micro cement with integrated lighting</p>
-                </div>
+                <img src="images/gallery/minimalist-bathroom-400-400.png" alt="Restaurant Bar Counter">
+                <div class="item-overlay"><h3>Restaurant Bar Counter</h3><p>Polished micro cement with integrated lighting</p></div>
             </div>
-
             <div class="gallery-item large" data-category="cement residential">
-                <img src="/api/placeholder/800/600" alt="Modern Kitchen">
-                <div class="item-overlay">
-                    <h3>Modern Kitchen</h3>
-                    <p>Complete kitchen renovation with micro cement surfaces</p>
-                </div>
+                <img src="images/gallery/modern-kitchen-800-600.png" alt="Modern Kitchen">
+                <div class="item-overlay"><h3>Modern Kitchen</h3><p>Complete kitchen renovation with micro cement surfaces</p></div>
             </div>
-
-            <!-- Additional mixed projects -->
             <div class="gallery-item wide" data-category="resin cement commercial">
-                <img src="/api/placeholder/800/400" alt="Hotel Lobby Installation">
-                <div class="item-overlay">
-                    <h3>Hotel Lobby Installation</h3>
-                    <p>Custom reception desk combining both materials</p>
-                </div>
+                <img src="images/gallery/hotel-lobby-installation-800-400.png" alt="Hotel Lobby Installation">
+                <div class="item-overlay"><h3>Hotel Lobby Installation</h3><p>Custom reception desk combining both materials</p></div>
             </div>
-
             <div class="gallery-item" data-category="resin residential">
-                <img src="/api/placeholder/400/400" alt="Ocean Table">
-                <div class="item-overlay">
-                    <h3>Ocean Table</h3>
-                    <p>Multi-layered blue resin mimicking ocean waves</p>
-                </div>
+                <img src="images/gallery/ocean-table-400-400.png" alt="Ocean Table">
+                <div class="item-overlay"><h3>Ocean Table</h3><p>Multi-layered blue resin mimicking ocean waves</p></div>
             </div>
         </div>
     </div>
 
-    <!-- Lightbox -->
     <div class="lightbox">
         <div class="lightbox-content">
             <img class="lightbox-img" src="" alt="">
@@ -492,19 +459,19 @@
 
     <script>
         $(document).ready(function() {
-            // Mobile menu toggle
+            // --- Mobile menu toggle ---
             $('.menu-toggle').click(function() {
                 $('.nav-links').toggleClass('active');
+                // Add body scroll prevention
+                $('body').toggleClass('no-scroll', $('.nav-links').hasClass('active'));
             });
-            
-            // Gallery filtering
+
+            // --- Gallery filtering ---
             $('.filter-button').click(function() {
                 const filter = $(this).data('filter');
-                
-                // Update active filter button
                 $('.filter-button').removeClass('active');
                 $(this).addClass('active');
-                
+
                 if (filter === 'all') {
                     $('.gallery-item').show(300);
                 } else {
@@ -517,22 +484,82 @@
                     });
                 }
             });
-            
-            // Lightbox functionality
+
+            // --- Lightbox functionality ---
             $('.gallery-item').click(function() {
                 const imgSrc = $(this).find('img').attr('src');
-                const caption = $(this).find('h3').text();
-                
+                 // Get caption from overlay h3 or img alt as fallback
+                 let caption = $(this).find('.item-overlay h3').text();
+                 if (!caption) {
+                     caption = $(this).find('img').attr('alt');
+                 }
+
                 $('.lightbox-img').attr('src', imgSrc);
-                $('.lightbox-caption').text(caption);
+                $('.lightbox-caption').text(caption || ''); // Ensure caption is not undefined
                 $('.lightbox').addClass('active');
             });
-            
+
             $('.lightbox-close, .lightbox').click(function(e) {
-                if (e.target === this) {
+                 // Close only if background or close button is clicked
+                if ($(e.target).is('.lightbox, .lightbox-close')) {
                     $('.lightbox').removeClass('active');
                 }
             });
+
+
+            // --- Header scroll behavior ---
+            const header = $('header');
+            let triggerPoint = 0;
+            let isHidden = false;
+            let lastScrollTop = 0;
+
+            function calculateTriggerPoint() {
+                // Use '.gallery-filter' as the trigger element for this page
+                const triggerElement = $('.gallery-filter');
+                if (triggerElement.length) {
+                    triggerPoint = triggerElement.offset().top - header.outerHeight() - 20;
+                } else {
+                    // Fallback if filter isn't present
+                    triggerPoint = 150;
+                }
+                triggerPoint = Math.max(10, triggerPoint);
+            }
+
+             calculateTriggerPoint();
+             $(window).on('load resize', function() {
+                 setTimeout(calculateTriggerPoint, 100);
+             });
+
+
+            $(window).scroll(function() {
+                const scrollTop = $(this).scrollTop();
+                const scrollDirection = scrollTop > lastScrollTop ? 'down' : 'up';
+
+                if (scrollTop <= 10) {
+                    if (isHidden) {
+                        header.css('transform', 'translateY(0)');
+                        isHidden = false;
+                    }
+                     header.removeClass('sticky');
+                }
+                else if (scrollDirection === 'down') {
+                    if (scrollTop > triggerPoint && !isHidden) {
+                        header.css('transform', 'translateY(-100%)');
+                        header.removeClass('sticky');
+                        isHidden = true;
+                    } else if (!isHidden) {
+                         header.addClass('sticky');
+                     }
+                }
+                else if (scrollDirection === 'up') {
+                     if (!isHidden) {
+                         header.addClass('sticky');
+                     }
+                }
+
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            });
+
         });
     </script>
 </body>

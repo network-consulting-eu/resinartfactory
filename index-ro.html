@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resin & Cement Artisans</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Ubuntu', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #f5f5f5; /* Fallback if image/video fail */
+            color: #333;
+        }
+
+        /* Video Background */
+        .video-background {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Fallback Image for Video */
+        .fallback-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2; /* Below video and overlay */
+            display: block;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65); /* Overlay darkness */
+            z-index: 0;
+        }
+
+        /* Content */
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1; /* Above overlay */
+            width: 90%;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .main-logo {
+            width: 350px;
+            height: auto;
+            margin-bottom: 40px;
+        }
+
+        .tagline-container {
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .tagline {
+            color: #fff;
+            font-size: 24px;
+            font-weight: 300;
+            line-height: 1.6;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+            position: relative;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .tagline-highlight {
+            color: #e6a756;
+            font-weight: 500;
+        }
+
+        .tagline-decorator {
+            width: 150px;
+            height: 3px;
+            background: #e6a756;
+            margin: 25px auto;
+            position: relative;
+        }
+
+        .tagline-decorator:before,
+        .tagline-decorator:after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #e6a756;
+        }
+
+        .tagline-decorator:before {
+            left: 0;
+        }
+
+        .tagline-decorator:after {
+            right: 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 14px 36px;
+            background: #e6a756;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            font-size: 18px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            margin-top: 15px;
+        }
+
+        .cta-button:hover {
+            background: #d89743;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* --- Scroll Indicator CSS Removed --- */
+
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .main-logo {
+                width: 280px;
+            }
+
+            .tagline {
+                font-size: 18px;
+            }
+
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-background">
+        <video autoplay loop muted playsinline>
+            <source src="path/to/your/background-video.mp4" type="video/mp4">
+            </video>
+        <img src="images/resin-table-background.jpg" alt="Beautiful resin table" class="fallback-image">
+        <div class="overlay"></div>
+    </div>
+
+    <div class="content">
+        <img src="images/logo-resinartfactory.svg" alt="Resin Art Factory" class="main-logo">
+
+        <div class="tagline-container">
+            <div class="tagline">
+                Where <span class="tagline-highlight">nature's beauty</span> meets
+                <span class="tagline-highlight">artisanal craftsmanship</span>
+            </div>
+            <div class="tagline-decorator"></div>
+            <div class="tagline">
+                Creating timeless pieces that become the soul of your space
+            </div>
+        </div>
+
+        <a href="our-work.html" class="cta-button">Explore Our Work</a>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Video fallback - ensure the fallback image shows if video fails
+            $('video').on('error', function() {
+                console.error("Video failed to load."); // Log error
+                $(this).css('display', 'none'); // Hide video element
+                $('.fallback-image').css('z-index', '-1'); // Ensure fallback is visible below overlay
+            });
+
+            // --- Scroll Indicator Click Handler Removed ---
+
+        });
+    </script>
+</body>
+</html>

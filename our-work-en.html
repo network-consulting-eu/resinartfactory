@@ -21,6 +21,11 @@
             background-color: #f5f5f5;
             color: #333;
         }
+         /* Add this if using body scroll prevention */
+         body.no-scroll {
+             overflow: hidden;
+         }
+
 
         /* Navigation */
         header {
@@ -32,41 +37,23 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 100; /* Higher z-index to ensure header stays above content */
-            background: transparent; /* Fully transparent background */
-            box-shadow: none; /* Remove shadow for transparency */
-            transition: transform 0.3s ease-in-out, background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
-        }
-
-        header.visible {
-            transform: translateY(0);
-        }
-
-        header.hidden {
-            transform: translateY(-100%);
+            z-index: 100;
+            background-color: transparent;
+            box-shadow: none;
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, padding 0.3s ease;
         }
 
         header.sticky {
+            background-color: #f5f5f5;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             padding: 10px 40px;
-            background: rgba(255, 255, 255, 0.95); /* Add background when sticky for better readability */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .nav-links a {
-            color: #333; /* Dark text for contrast */
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 18px;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: #e6a756; /* Keep gold color for hover/active state */
-        }
-
-        .menu-toggle {
-            color: #333; /* Dark icon */
-        }
+         header.sticky .logo,
+         header.sticky .nav-links,
+         header.sticky .menu-toggle {
+            z-index: 101;
+         }
 
         .logo {
             text-decoration: none;
@@ -80,7 +67,6 @@
             height: auto;
             width: 200px;
             transition: 0.3s;
-            /* No blend mode or filters needed for SVG */
         }
 
         .nav-links {
@@ -105,17 +91,26 @@
         }
 
         /* Page content */
-        .page-container {
-            max-width: 1200px;
-            margin: 120px auto 60px; /* Increased top margin to ensure space below header */
-            padding: 0 20px;
-        }
+         /* Increased Specificity by adding 'body' */
+         body .page-container {
+             max-width: 1200px;
+             /* Using your 180px value */
+             padding-top: 180px;
+             margin: 0 auto 60px;
+             padding-left: 20px;
+             padding-right: 20px;
+             box-sizing: border-box; /* Good practice */
+         }
 
-        .page-title {
-            text-align: center;
-            margin-bottom: 60px;
-            padding-top: 40px; /* Added padding to create more space between header and title */
-        }
+
+         /* Reset potential positioning issues on page-title - Added */
+         .page-title {
+             position: relative; /* Ensure default layout behavior */
+             margin-top: 0; /* Prevent negative margins pulling it up */
+             text-align: center;
+             margin-bottom: 60px; /* Keep original margin-bottom */
+         }
+
 
         .page-title h1 {
             font-size: 42px;
@@ -290,66 +285,100 @@
             line-height: 1.6;
         }
 
-        /* Mobile menu */
+        /* Mobile menu toggle */
         .menu-toggle {
             display: none;
             cursor: pointer;
             color: #333;
             font-size: 24px;
+            z-index: 102;
         }
 
         /* Responsive design */
-        @media (max-width: 768px) {
+         @media (max-width: 992px) {
+             /* Increased Specificity and adjusted value */
+             body .page-container {
+                 /* Adjusted proportionally from 180px */
+                 padding-top: 180px;
+             }
+             header.sticky {
+                 padding: 10px 30px;
+             }
+             header {
+                 padding: 15px 30px;
+             }
+             .feature-grid {
+                 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+             }
+         }
+
+
+         @media (max-width: 768px) {
+             header {
+                 padding: 10px 20px;
+             }
+             header.sticky {
+                  padding: 5px 20px;
+             }
             .menu-toggle {
                 display: block;
             }
-
             .nav-links {
                 position: fixed;
-                top: 80px;
+                 top: 0;
+                 /* Adjusted mobile menu padding top if needed based on header */
+                 padding-top: 70px; /* Example: Adjust based on final mobile header height */
                 left: -100%;
                 width: 100%;
-                height: calc(100% - 80px);
-                background: rgba(245, 245, 245, 0.9); /* Light gray background with transparency */
+                 height: 100vh;
+                background: rgba(245, 245, 245, 0.95);
+                 backdrop-filter: blur(5px);
                 flex-direction: column;
                 align-items: center;
                 justify-content: flex-start;
-                padding-top: 40px;
-                transition: 0.5s;
+                transition: 0.5s ease;
+                 z-index: 99;
             }
-
             .nav-links.active {
                 left: 0;
             }
-
             .nav-links li {
-                margin: 15px 0;
+                margin: 20px 0;
             }
-            
             .nav-links a {
-                color: #333 !important; /* Force dark text in mobile menu */
-                font-size: 20px;
+                color: #333 !important;
+                font-size: 22px;
             }
-
             .tab-navigation {
                 flex-direction: column;
                 align-items: center;
             }
-
             .tab-button {
                 width: 80%;
                 margin: 5px 0;
             }
-
             .feature-grid {
-                grid-template-columns: 1fr;
+                 grid-template-columns: 1fr;
+                  gap: 30px;
             }
-        }
+            /* Increased Specificity and adjusted value */
+            body .page-container {
+                 /* Adjusted proportionally from 180px */
+                 padding-top: 160px;
+            }
+            .section-intro h2 {
+                 font-size: 30px;
+            }
+            .process-step {
+                 min-width: 100%;
+                 padding: 0;
+            }
+         }
     </style>
 </head>
 <body>
     <header>
-        <a href="index.html" class="logo"><img src="images/logo-resinartfactory.svg" alt="Resin Art Factory Logo" class="logo-image"></a>
+         <a href="index.html" class="logo"><img src="images/logo-resinartfactory-black.svg" alt="Resin Art Factory Logo" class="logo-image"></a>
         <div class="menu-toggle">☰</div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
@@ -371,7 +400,6 @@
             <button class="tab-button" data-tab="cement">Micro Cement</button>
         </div>
 
-        <!-- Resin Tables Section -->
         <div id="resin" class="work-section active">
             <div class="section-intro">
                 <h2>Resin Tables</h2>
@@ -380,29 +408,29 @@
 
             <div class="feature-grid">
                 <div class="feature-item">
-                    <div class="feature-image" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="feature-image" style="background-image: url('images/our-work/river-table.jpeg');"></div>
                     <div class="feature-content">
                         <h3>River Tables</h3>
                         <p>Our signature river tables feature stunning blue resin "rivers" flowing through natural wood slabs, creating a breathtaking visual effect that mimics water flowing through a landscape.</p>
-                        <a href="#" class="read-more">Learn More</a>
+                        <!-- <a href="#" class="read-more">Learn More</a> -->
                     </div>
                 </div>
 
                 <div class="feature-item">
-                    <div class="feature-image" style="background-image: url('/api/placeholder/400/300');"></div>
+                     <div class="feature-image" style="background-image: url('images/our-work/ocean-table.jpeg');"></div>
                     <div class="feature-content">
                         <h3>Ocean Tables</h3>
                         <p>Inspired by coastal scenes, our ocean tables incorporate multiple layers of colored resin to create depth and movement, perfectly capturing the essence of ocean waves and shorelines.</p>
-                        <a href="#" class="read-more">Learn More</a>
+                        <!-- <a href="#" class="read-more">Learn More</a> -->
                     </div>
                 </div>
 
                 <div class="feature-item">
-                    <div class="feature-image" style="background-image: url('/api/placeholder/400/300');"></div>
+                     <div class="feature-image" style="background-image: url('images/our-work/geode-table.jpeg');"></div>
                     <div class="feature-content">
                         <h3>Geode Tables</h3>
                         <p>These unique pieces mimic natural geode formations using specialized techniques that create crystalline patterns within the resin, often incorporating actual gemstones and minerals.</p>
-                        <a href="#" class="read-more">Learn More</a>
+                        <!-- <a href="#" class="read-more">Learn More</a> -->
                     </div>
                 </div>
             </div>
@@ -431,7 +459,6 @@
             </div>
         </div>
 
-        <!-- Micro Cement Section -->
         <div id="cement" class="work-section">
             <div class="section-intro">
                 <h2>Micro Cement</h2>
@@ -440,29 +467,29 @@
 
             <div class="feature-grid">
                 <div class="feature-item">
-                    <div class="feature-image" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="feature-image" style="background-image: url('images/our-work/interior-wall.jpeg');"></div>
                     <div class="feature-content">
                         <h3>Interior Walls</h3>
                         <p>Our micro cement wall finishes create stunning, textured surfaces with a contemporary industrial aesthetic, available in a wide range of custom colors and finishes.</p>
-                        <a href="#" class="read-more">Learn More</a>
+                        <!-- <a href="#" class="read-more">Learn More</a> -->
                     </div>
                 </div>
 
                 <div class="feature-item">
-                    <div class="feature-image" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="feature-image" style="background-image: url('images/our-work/decorative-flooring.jpeg');"></div>
                     <div class="feature-content">
                         <h3>Decorative Flooring</h3>
                         <p>Durable, seamless flooring solutions that combine beauty with functionality, perfect for residential and commercial spaces requiring a modern, low-maintenance finish.</p>
-                        <a href="#" class="read-more">Learn More</a>
+                        <!-- <a href="#" class="read-more">Learn More</a> -->
                     </div>
                 </div>
 
                 <div class="feature-item">
-                    <div class="feature-image" style="background-image: url('/api/placeholder/400/300');"></div>
+                    <div class="feature-image" style="background-image: url('images/our-work/custom-furniture.jpeg');"></div>
                     <div class="feature-content">
                         <h3>Custom Furniture</h3>
                         <p>From sleek countertops to entire furniture pieces, our micro cement applications create striking monolithic forms with a sophisticated, minimalist appeal.</p>
-                        <a href="#" class="read-more">Learn More</a>
+                        <!-- <a href="#" class="read-more">Learn More</a> -->
                     </div>
                 </div>
             </div>
@@ -493,74 +520,75 @@
     </div>
 
     <script>
-        $(document).ready(function() {
-// Add this JavaScript to all your pages (inside the $(document).ready function)
+    $(document).ready(function() {
+        // --- Mobile menu toggle ---
+        $('.menu-toggle').click(function() {
+            $('.nav-links').toggleClass('active');
+             $('body').toggleClass('no-scroll', $('.nav-links').hasClass('active'));
+        });
 
-$(document).ready(function() {
-    // Variables
-    let lastScrollTop = 0;
-    const header = $('header');
-    const delta = 10; // Minimum amount of pixels scrolled before triggering header hide/show
-    const headerHeight = header.outerHeight();
-    
-    // Add a class to set initial state
-    header.addClass('visible');
-    
-    // Add CSS for hide/show animations
-    const style = `
-        <style>
-            header {
-                transition: transform 0.3s ease-in-out;
+        // --- Tab navigation ---
+        $('.tab-button').click(function() {
+            const tab = $(this).data('tab');
+            $('.tab-button').removeClass('active');
+            $(this).addClass('active');
+            $('.work-section').removeClass('active');
+            $('#' + tab).addClass('active');
+        });
+
+        // --- Header scroll behavior ---
+        const header = $('header');
+        let triggerPoint = 0;
+        let isHidden = false;
+        let lastScrollTop = 0;
+
+        function calculateTriggerPoint() {
+             // Changed trigger element to '.tab-navigation' for this page
+            const triggerElement = $('.tab-navigation');
+            if (triggerElement.length) {
+                triggerPoint = triggerElement.offset().top - header.outerHeight() - 20;
+            } else {
+                triggerPoint = 150; // Fallback
             }
-            header.visible {
-                transform: translateY(0);
-            }
-            header.hidden {
-                transform: translateY(-100%);
-            }
-            
-            /* Add padding to first content element to prevent overlap */
-            .page-container {
-                padding-top: ${headerHeight + 40}px !important;
-            }
-            
-            /* Home page specific adjustments */
-            body.home .content {
-                padding-top: 100px;
-            }
-        </style>
-    `;
-    $('head').append(style);
-    
-    // Function to handle scroll
-    $(window).scroll(function() {
-        const scrollTop = $(this).scrollTop();
-        
-        // Make sure scroll is more than delta
-        if(Math.abs(lastScrollTop - scrollTop) <= delta) {
-            return;
+            triggerPoint = Math.max(10, triggerPoint);
         }
-        
-        // Scrolling down and past header height
-        if(scrollTop > lastScrollTop && scrollTop > headerHeight) {
-            header.removeClass('visible').addClass('hidden');
-        } 
-        // Scrolling up
-        else if(scrollTop < lastScrollTop) {
-            header.removeClass('hidden').addClass('visible');
-        }
-        
-        // Update last scroll position
-        lastScrollTop = scrollTop;
-        
-        // Add sticky class when scrolled
-        if(scrollTop > 100) {
-            header.addClass('sticky');
-        } else {
-            header.removeClass('sticky');
-        }
+
+         calculateTriggerPoint();
+         $(window).on('load resize', function() {
+             setTimeout(calculateTriggerPoint, 100);
+         });
+
+
+        $(window).scroll(function() {
+            const scrollTop = $(this).scrollTop();
+            const scrollDirection = scrollTop > lastScrollTop ? 'down' : 'up';
+
+            if (scrollTop <= 10) {
+                if (isHidden) {
+                    header.css('transform', 'translateY(0)');
+                    isHidden = false;
+                }
+                 header.removeClass('sticky');
+            }
+            else if (scrollDirection === 'down') {
+                if (scrollTop > triggerPoint && !isHidden) {
+                    header.css('transform', 'translateY(-100%)');
+                    header.removeClass('sticky');
+                    isHidden = true;
+                } else if (!isHidden) {
+                     header.addClass('sticky');
+                 }
+            }
+            else if (scrollDirection === 'up') {
+                 if (!isHidden) {
+                     header.addClass('sticky');
+                 }
+            }
+
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+
     });
-});
     </script>
 </body>
 </html>

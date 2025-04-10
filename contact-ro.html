@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Resin & Cement Artisans</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Ubuntu', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+         /* Add this if using body scroll prevention */
+         body.no-scroll {
+             overflow: hidden;
+         }
+
+        /* --- Updated Navigation Styles --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background-color: transparent; /* Start transparent */
+            box-shadow: none;
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, padding 0.3s ease;
+        }
+
+        header.sticky {
+            background-color: #f5f5f5; /* Add background */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional shadow */
+            padding: 10px 40px; /* Adjust padding */
+        }
+
+         header.sticky .logo,
+         header.sticky .nav-links,
+         header.sticky .menu-toggle {
+            z-index: 101; /* Ensure these are above sticky background */
+         }
+
+        .logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 2; /* Above default transparent background */
+        }
+
+        .logo-image {
+            height: auto;
+            width: 200px;
+            transition: 0.3s;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: #333; /* Dark text for default state */
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #e6a756; /* Gold color for hover/active */
+        }
+
+         .menu-toggle {
+             display: none;
+             cursor: pointer;
+             color: #333; /* Dark icon */
+             font-size: 24px;
+             z-index: 102; /* Above sticky background */
+         }
+        /* --- End Updated Navigation Styles --- */
+
+
+        /* Page content */
+         /* Increased Specificity and using padding-top */
+         body .page-container {
+             max-width: 1200px;
+             /* Consistent padding top (using 180px base from other pages) */
+             padding-top: 180px;
+             /* Removed margin-top, use padding instead */
+             margin: 0 auto 60px;
+             padding-left: 20px;
+             padding-right: 20px;
+             box-sizing: border-box;
+         }
+
+         /* Reset potential positioning issues on page-title */
+         .page-title {
+             position: relative; /* Ensure default layout behavior */
+             margin-top: 0; /* Prevent negative margins pulling it up */
+             text-align: center;
+             margin-bottom: 60px; /* Keep original margin-bottom */
+             /* Removed padding-top: 40px; as container handles spacing */
+         }
+
+        .page-title h1 {
+            font-size: 42px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .page-title .separator {
+            width: 80px;
+            height: 4px;
+            background: #e6a756;
+            margin: 0 auto;
+        }
+
+        /* Contact section */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 40px; /* Keep spacing below title */
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 40px 40px 0; /* Adjust right padding */
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-item {
+            display: flex;
+            margin-bottom: 30px;
+            align-items: flex-start; /* Align icon and text top */
+        }
+
+        .info-icon {
+            width: 50px; /* Slightly smaller icon */
+            height: 50px;
+            background: #e6a756;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            color: #fff; /* SVG will inherit this white color */
+            font-size: 20px; /* Fallback size */
+            flex-shrink: 0; /* Prevent icon shrinking */
+        }
+
+        /* --- Added SVG Styling --- */
+        .info-icon svg,
+        .social-link svg {
+            width: 24px; /* Or your desired size */
+            height: 24px;
+            fill: currentColor; /* Inherits color from parent (.info-icon or .social-link) */
+            display: block; /* Helps with alignment */
+        }
+        /* --- End SVG Styling --- */
+
+
+        .info-content h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .info-content p, .info-content a {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .info-content a:hover {
+            color: #e6a756;
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 40px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            color: #333; /* SVG will inherit this */
+            text-decoration: none;
+            /* font-size: 18px; Removed */
+            transition: 0.3s;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-link:hover {
+            background: #e6a756;
+            color: #fff; /* SVG will inherit this */
+            transform: translateY(-3px);
+        }
+
+        /* Form styling */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #444;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #e6a756;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(230, 167, 86, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #e6a756;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #d89743;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Map section */
+        .map-section {
+            margin-top: 60px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 400px;
+            background-color: #eee; /* Placeholder background */
+        }
+
+        .map-section iframe { /* Style for actual map embed */
+             width: 100%;
+             height: 100%;
+             border: none;
+        }
+
+        /* Responsive design */
+         @media (max-width: 992px) {
+             /* Add specificity here */
+             body .page-container {
+                 padding-top: 140px; /* Adjust tablet padding */
+             }
+             header.sticky {
+                 padding: 10px 30px;
+             }
+             header {
+                 padding: 15px 30px;
+             }
+         }
+
+        @media (max-width: 768px) {
+             header {
+                 padding: 10px 20px;
+             }
+             header.sticky {
+                  padding: 5px 20px;
+             }
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                position: fixed;
+                 top: 0;
+                 padding-top: 70px; /* Adjust based on mobile header height */
+                left: -100%;
+                width: 100%;
+                 height: 100vh;
+                background: rgba(245, 245, 245, 0.95);
+                 backdrop-filter: blur(5px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                transition: 0.5s ease;
+                 z-index: 99;
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .nav-links li {
+                margin: 20px 0;
+            }
+            .nav-links a {
+                color: #333 !important;
+                font-size: 22px;
+            }
+            /* Add specificity here */
+             body .page-container {
+                 padding-top: 160px; /* Mobile padding */
+             }
+            .contact-container {
+                flex-direction: column;
+            }
+            .contact-info {
+                padding-right: 0; /* Remove right padding on mobile */
+                margin-bottom: 40px;
+            }
+             .contact-form {
+                 padding: 30px; /* Slightly reduce form padding */
+             }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo"><img src="images/logo-resinartfactory-black.svg" alt="Resin Art Factory Logo" class="logo-image"></a>
+        <div class="menu-toggle">☰</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="our-work.html">Our Work</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </header>
+
+    <div class="page-container">
+        <div class="page-title">
+            <h1>Contact Us</h1>
+            <div class="separator"></div>
+        </div>
+
+        <div class="contact-container">
+            <div class="contact-info">
+                 <h2 style="margin-bottom: 35px; color: #333; font-size: 28px;">Get In Touch</h2>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    </div>
+                    <div class="info-content">
+                        <h3>Our Location</h3>
+                        <p>123 Artisan Way, Suite 300<br>Portland, OR 97205</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    </div>
+                    <div class="info-content">
+                        <h3>Phone Number</h3>
+                        <p><a href="tel:+15035551234">(503) 555-1234</a></p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </div>
+                    <div class="info-content">
+                        <h3>Email Address</h3>
+                        <p><a href="mailto:info@resinandcement.com">info@resinandcement.com</a></p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">
+                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/><path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                    </div>
+                    <div class="info-content">
+                        <h3>Working Hours</h3>
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM<br>
+                           Saturday: 10:00 AM - 4:00 PM<br>
+                           Sunday: Closed</p>
+                    </div>
+                </div>
+
+                 <div class="social-links">
+                     <a href="#" class="social-link instagram"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+                     </a>
+                     </div>
+            </div>
+
+            <div class="contact-form">
+                <h2 style="margin-bottom: 25px; color: #333;">Send Us a Message</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" class="form-control" required></textarea>
+                    </div>
+
+                     <div class="form-group">
+                         <label for="captcha">To show you're human: What is 5 + 3 ?</label>
+                         <input type="number" id="captcha" name="captcha_answer" class="form-control" required placeholder="Enter the result">
+                         <small style="color: red; display: none; margin-top: 5px;" id="captchaError">Incorrect answer. Please try again.</small>
+                     </div>
+                     <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="map-section">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2795.502915533774!2d-122.68191598444069!3d45.51879777910165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54950a0b7b3ea9b1%3A0x1a3b2b1a5e1f7c7a!2sPortland%2C%20OR%2097205!5e0!3m2!1sen!2sus!4v1678886451234!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // --- Mobile menu toggle ---
+            $('.menu-toggle').click(function() {
+                $('.nav-links').toggleClass('active');
+                $('body').toggleClass('no-scroll', $('.nav-links').hasClass('active'));
+            });
+
+            // --- Form submission with CAPTCHA Check ---
+            $('#contactForm').submit(function(e) {
+                // Prevent default submission initially to validate captcha
+                e.preventDefault();
+
+                // --- CAPTCHA Validation ---
+                const expectedAnswer = 8; // Because the question is 5 + 3
+                const userAnswer = parseInt($('#captcha').val(), 10); // Get the user's answer as a number
+                const $captchaError = $('#captchaError'); // Get the error message element
+
+                $captchaError.hide(); // Hide any previous error
+
+                if (userAnswer !== expectedAnswer) {
+                    // Incorrect CAPTCHA answer
+                    $captchaError.show(); // Show the error message
+                    $('#captcha').focus(); // Bring focus to the input field
+                    // Do NOT proceed with the submission
+                } else {
+                    // Correct CAPTCHA answer - Proceed with your original action
+                    // In your current code, this just shows an alert and resets.
+                    // For a real form, you would submit the data here (e.g., via AJAX or allow default submit).
+
+                    alert('Thank you for your message! We will get back to you soon.');
+                    $(this).trigger('reset'); // Reset the form fields
+                    $captchaError.hide(); // Hide error message on success too
+                }
+                // --- End CAPTCHA Validation ---
+            });
+
+            // --- Header scroll behavior ---
+            const header = $('header');
+            let triggerPoint = 0;
+            let isHidden = false;
+            let lastScrollTop = 0;
+
+            function calculateTriggerPoint() {
+                // Use '.contact-container' as the trigger element for this page
+                const triggerElement = $('.contact-container');
+                if (triggerElement.length) {
+                    // Hide when the top of the contact container is a bit below the header
+                    triggerPoint = triggerElement.offset().top - header.outerHeight() - 20;
+                } else {
+                    // Fallback
+                    triggerPoint = 150;
+                }
+                triggerPoint = Math.max(10, triggerPoint);
+            }
+
+             calculateTriggerPoint();
+             $(window).on('load resize', function() {
+                 setTimeout(calculateTriggerPoint, 100);
+             });
+
+
+            $(window).scroll(function() {
+                const scrollTop = $(this).scrollTop();
+                const scrollDirection = scrollTop > lastScrollTop ? 'down' : 'up';
+
+                if (scrollTop <= 10) {
+                    if (isHidden) {
+                        header.css('transform', 'translateY(0)');
+                        isHidden = false;
+                    }
+                     header.removeClass('sticky');
+                }
+                else if (scrollDirection === 'down') {
+                    if (scrollTop > triggerPoint && !isHidden) {
+                        header.css('transform', 'translateY(-100%)');
+                        header.removeClass('sticky');
+                        isHidden = true;
+                    } else if (!isHidden) {
+                         header.addClass('sticky');
+                     }
+                }
+                else if (scrollDirection === 'up') {
+                     if (!isHidden) {
+                         header.addClass('sticky');
+                     }
+                }
+
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            });
+
+        });
+    </script>
+</body>
+</html>
