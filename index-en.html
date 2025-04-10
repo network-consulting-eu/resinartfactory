@@ -152,7 +152,31 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* --- Scroll Indicator CSS Removed --- */
+        /* --- Language Switch Button CSS --- */
+        .language-switch {
+            position: fixed;
+            top: 25px; /* Adjust vertical position */
+            right: 30px; /* Adjust horizontal position */
+            z-index: 10; /* Ensure it's above overlay */
+            display: block;
+            padding: 5px; /* Optional: adds space around the flag */
+            background-color: rgba(255, 255, 255, 0.1); /* Subtle background */
+            border-radius: 50%; /* Makes the background circular */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            line-height: 0; /* Prevents extra space if padding is used */
+        }
+
+        .language-switch:hover {
+            background-color: rgba(255, 255, 255, 0.25); /* More visible on hover */
+            transform: scale(1.1); /* Slight zoom effect */
+        }
+
+        .language-switch .flag-icon {
+            width: 32px;  /* Adjust flag size */
+            height: auto;
+            display: block; /* Remove potential extra space */
+            border-radius: 50%; /* Ensures flag fits the circle if it's square */
+        }
 
 
         /* Responsive design */
@@ -169,20 +193,29 @@
                 padding: 12px 30px;
                 font-size: 16px;
             }
+
+            /* Adjust flag button position/size for smaller screens if needed */
+            .language-switch {
+                 top: 15px;
+                 right: 15px;
+                 padding: 4px;
+            }
+            .language-switch .flag-icon {
+                 width: 28px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="video-background">
         <video autoplay loop muted playsinline>
-            <source src="videos/test_file_1080p.mp4" type="video/mp4">
-            </video>
-        <img src="images/resin-table-background.jpg" alt="Beautiful resin table" class="fallback-image">
-        <div class="overlay"></div>
+            <source src="videos/background-video.mp4" type="video/mp4">
+        </video>
+        <img src="images/resin-table-background.jpg" alt="Beautiful resin table background" class="fallback-image"> <div class="overlay"></div>
     </div>
 
     <div class="content">
-        <img src="images/logo-resinartfactory.svg" alt="Resin Art Factory" class="main-logo">
+        <img src="images/logo-resinartfactory.svg" alt="Resin Art Factory Logo" class="main-logo">
 
         <div class="tagline-container">
             <div class="tagline">
@@ -195,9 +228,12 @@
             </div>
         </div>
 
-        <a href="our-work.html" class="cta-button">Explore Our Work</a>
+        <a href="our-work.html" class="cta-button">Welcome</a>
     </div>
 
+    <a href="index-ro.html" class="language-switch" title="Vezi site-ul în limba Română">
+        <img src="images/flag-ro.svg" alt="Romanian Flag" class="flag-icon">
+    </a>
     <script>
         $(document).ready(function() {
             // Video fallback - ensure the fallback image shows if video fails
@@ -206,8 +242,6 @@
                 $(this).css('display', 'none'); // Hide video element
                 $('.fallback-image').css('z-index', '-1'); // Ensure fallback is visible below overlay
             });
-
-            // --- Scroll Indicator Click Handler Removed ---
 
         });
     </script>
