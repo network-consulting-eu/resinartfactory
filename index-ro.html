@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resin & Cement Artisans</title>
+    <title>Artizani în Rășină și Ciment</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
+        /* CSS styles remain identical to index.html */
         * {
             margin: 0;
             padding: 0;
@@ -152,10 +153,34 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* --- Scroll Indicator CSS Removed --- */
+        /* --- Language Switch Button CSS (Identical) --- */
+        .language-switch {
+            position: fixed;
+            top: 25px; /* Adjust vertical position */
+            right: 30px; /* Adjust horizontal position */
+            z-index: 10; /* Ensure it's above overlay */
+            display: block;
+            padding: 5px; /* Optional: adds space around the flag */
+            background-color: rgba(255, 255, 255, 0.1); /* Subtle background */
+            border-radius: 50%; /* Makes the background circular */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            line-height: 0; /* Prevents extra space if padding is used */
+        }
+
+        .language-switch:hover {
+            background-color: rgba(255, 255, 255, 0.25); /* More visible on hover */
+            transform: scale(1.1); /* Slight zoom effect */
+        }
+
+        .language-switch .flag-icon {
+            width: 32px;  /* Adjust flag size */
+            height: auto;
+            display: block; /* Remove potential extra space */
+            border-radius: 50%; /* Ensures flag fits the circle if it's square */
+        }
 
 
-        /* Responsive design */
+        /* Responsive design (Identical) */
         @media (max-width: 768px) {
             .main-logo {
                 width: 280px;
@@ -169,36 +194,50 @@
                 padding: 12px 30px;
                 font-size: 16px;
             }
+
+            /* Adjust flag button position/size for smaller screens if needed */
+            .language-switch {
+                 top: 15px;
+                 right: 15px;
+                 padding: 4px;
+            }
+            .language-switch .flag-icon {
+                 width: 28px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="video-background">
         <video autoplay loop muted playsinline>
-            <source src="path/to/your/background-video.mp4" type="video/mp4">
-            </video>
-        <img src="images/resin-table-background.jpg" alt="Beautiful resin table" class="fallback-image">
+            <source src="videos/test_file_1080p.mp4" type="video/mp4">
+        </video>
+        <img src="images/resin-table-background.jpg" alt="Fundal cu masă elegantă din rășină" class="fallback-image">
         <div class="overlay"></div>
     </div>
 
     <div class="content">
-        <img src="images/logo-resinartfactory.svg" alt="Resin Art Factory" class="main-logo">
+        <img src="images/logo-resinartfactory.svg" alt="Logo Resin Art Factory" class="main-logo">
 
         <div class="tagline-container">
             <div class="tagline">
-                Where <span class="tagline-highlight">nature's beauty</span> meets
-                <span class="tagline-highlight">artisanal craftsmanship</span>
+                Locul unde <span class="tagline-highlight">frumusețea naturii</span> întâlnește
+                <span class="tagline-highlight">arta meșteșugului</span>
             </div>
             <div class="tagline-decorator"></div>
             <div class="tagline">
-                Creating timeless pieces that become the soul of your space
+                Dăm viață unor elemente atemporale ce definesc sufletul spațiului dumneavoastră
             </div>
         </div>
 
-        <a href="our-work.html" class="cta-button">Explore Our Work</a>
+        <a href="our-work-ro.html" class="cta-button">Bun Venit</a>
     </div>
 
+    <a href="index.html" class="language-switch" title="View site in English">
+        <img src="images/flag-us.svg" alt="US Flag" class="flag-icon">
+    </a>
     <script>
+        // Javascript remains identical
         $(document).ready(function() {
             // Video fallback - ensure the fallback image shows if video fails
             $('video').on('error', function() {
@@ -206,8 +245,6 @@
                 $(this).css('display', 'none'); // Hide video element
                 $('.fallback-image').css('z-index', '-1'); // Ensure fallback is visible below overlay
             });
-
-            // --- Scroll Indicator Click Handler Removed ---
 
         });
     </script>
